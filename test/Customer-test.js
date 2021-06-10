@@ -1,6 +1,6 @@
 import chai from 'chai';
 const expect = chai.expect;
-import {customerData, bookingsData, roomsData} from './sample-data.js'
+import {customerData, user1BookingsData, roomsData} from './sample-data.js'
 import Customer from '../src/classes/Customer.js'
 
 describe('Customer Class', function() {
@@ -18,11 +18,21 @@ describe('Customer Class', function() {
     expect(customer.isManager).to.equal(false);
   });
 
-  it('should take in customer data and assign a username', function() {
+  it('should take in customer data and assign an id', function() {
+    expect(customer.id).to.equal(1);
+  });
+
+  it('should take in customer data and assign a userName', function() {
     expect(customer.userName).to.equal('customer1');
   });
-  //
-  // it('should have a isManager property with a default value of false', function() {
-  //   expect(user.isManager).to.equal(false);
-  // });
+
+  it('should take in customer data and assign a name', function() {
+    expect(customer.name).to.equal('Leatha Ullrich');
+  });
+
+  it('should have an array of bookings which is empty by default', function() {
+    expect(customer.bookings).to.deep.equal([]);
+  });
+
+
 });

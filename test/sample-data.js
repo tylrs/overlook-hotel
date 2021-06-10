@@ -21,6 +21,30 @@ export const customerData = [
   },
 ];
 
+export const user1BookingsData = [
+  {
+    id: '5fwrgu4i7k55hl6t8',
+    userID: 1,
+    date: '2020/02/05',
+    roomNumber: 1,
+    roomServiceCharges: []
+  },
+  {
+    id: '5fwrgu4i7k55hl6tl',
+    userID: 1,
+    date: '2020/01/10',
+    roomNumber: 2,
+    roomServiceCharges: []
+  },
+  {
+    id: '5fwrgu4i7k55hl6tv',
+    userID: 1,
+    date: '2020/01/19',
+    roomNumber: 3,
+    roomServiceCharges: []
+  }
+]
+
 export const bookingsData = [
   {
     id: '5fwrgu4i7k55hl6t8',
