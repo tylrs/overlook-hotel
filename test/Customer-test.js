@@ -4,9 +4,10 @@ import {customerData, user1BookingsData, roomsData} from './sample-data.js'
 import Customer from '../src/classes/Customer.js'
 
 describe('Customer Class', function() {
-  let customer;
+  let customer, currentDate;
   beforeEach (() => {
     customer = new Customer(customerData[0]);
+    currentDate = '2020/02/03';
   })
 
   it('should be an instance of a Customer class', function() {
@@ -34,5 +35,20 @@ describe('Customer Class', function() {
     expect(customer.bookings).to.deep.equal([]);
   });
 
+  it('should have a method which returns past bookings', function() {
+    customer.bookings = user1BookingsData;
 
+    expect(customer.returnBookings('past', currentDate)).to.deep.equal([user1BookingsData[1], user1BookingsData[2]]);
+  });
+
+  it('should have a method which returns current and future bookings', function() {
+    customer.bookings = user1BookingsData;
+
+    expect(customer.returnBookings('current&future', currentDate)).to.deep.equal([user1BookingsData[0], user1BookingsData[3]]);
+  });
+
+
+  // it('should return false if there are no bookings', function() {
+  //   expect(customer.bookings).to.deep.equal([]);
+  // });
 });

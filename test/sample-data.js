@@ -42,7 +42,14 @@ export const user1BookingsData = [
     date: '2020/01/19',
     roomNumber: 3,
     roomServiceCharges: []
-  }
+  },
+  {
+    id: '5fwrgu4i7k55hl6v3',
+    userID: 3,
+    date: '2020/02/03',
+    roomNumber: 1,
+    roomServiceCharges: []
+  },
 ]
 
 export const bookingsData = [
