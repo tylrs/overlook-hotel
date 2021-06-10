@@ -21,6 +21,10 @@ class Customer extends User {
       }
     })
   }
+
+  returnTotalSpent() {
+    
+  }
 }
 
 export default Customer;

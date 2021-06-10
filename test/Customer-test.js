@@ -47,8 +47,11 @@ describe('Customer Class', function() {
     expect(customer.returnBookings('current&future', currentDate)).to.deep.equal([user1BookingsData[0], user1BookingsData[3]]);
   });
 
+  it('should have a method to return the sum of all amount spent on bookings', function() {
+    customer.bookings = user1BookingsData;
 
-  // it('should return false if there are no bookings', function() {
-  //   expect(customer.bookings).to.deep.equal([]);
-  // });
+    expect(customer.returnTotalSpent()).to.equal();
+  });
+
+
 });
