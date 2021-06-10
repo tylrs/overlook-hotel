@@ -1,6 +1,7 @@
 class Hotel {
-  constructor() {
-
+  constructor(bookings, rooms) {
+    this.bookings = bookings;
+    this.rooms = rooms;
   }
 }
 
