@@ -1,13 +1,16 @@
 import chai from 'chai';
 const expect = chai.expect;
-import {customerData, user1BookingsData, roomsData} from './sample-data.js'
+import {customerData, user1BookingsData, bookingsData, roomsData} from './sample-data.js'
 import Customer from '../src/classes/Customer.js'
+import Hotel from '../src/classes/Hotel.js'
+
 
 describe('Customer Class', function() {
-  let customer, currentDate;
+  let customer, currentDate, hotel;
   beforeEach (() => {
     customer = new Customer(customerData[0]);
     currentDate = '2020/02/03';
+    hotel = new Hotel(bookingsData, roomsData);
   })
 
   it('should be an instance of a Customer class', function() {
@@ -50,7 +53,7 @@ describe('Customer Class', function() {
   it('should have a method to return the sum of all amount spent on bookings', function() {
     customer.bookings = user1BookingsData;
 
-    expect(customer.returnTotalSpent()).to.equal();
+    expect(customer.returnTotalSpent(hotel)).to.equal(1685);
   });
 
 

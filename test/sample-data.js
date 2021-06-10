@@ -45,7 +45,7 @@ export const user1BookingsData = [
   },
   {
     id: '5fwrgu4i7k55hl6v3',
-    userID: 3,
+    userID: 1,
     date: '2020/02/03',
     roomNumber: 1,
     roomServiceCharges: []
@@ -119,7 +119,7 @@ export const bookingsData = [
 ];
 
 export const roomsData = [
-    {
+  {
     "number": 1,
     "roomType": "residential suite",
     "bidet": true,

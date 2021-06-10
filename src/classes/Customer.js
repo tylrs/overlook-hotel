@@ -13,7 +13,7 @@ class Customer extends User {
   }
 
   returnBookings(type, currentDate) {
-    return this.bookings.filter((booking) => {
+    return this.bookings.filter(booking => {
       if (type === 'past') {
         return dayjs(booking.date).isBefore(currentDate);
       } else {
@@ -22,8 +22,14 @@ class Customer extends User {
     })
   }
 
-  returnTotalSpent() {
-    
+  returnTotalSpent(hotel) {
+    return Math.floor(this.bookings.reduce((acc, booking) => {
+      let foundRoom = hotel.rooms.find(room => {
+        return room.number === booking.roomNumber;
+      })
+      acc += foundRoom.costPerNight;
+      return acc;
+    }, 0))
   }
 }
 
