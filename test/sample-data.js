@@ -87,7 +87,7 @@ export const bookingsData = [
   }
 ];
 
-export const rooms = [
+export const roomsData = [
     {
     "number": 1,
     "roomType": "residential suite",
