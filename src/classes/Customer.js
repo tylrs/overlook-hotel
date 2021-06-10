@@ -31,6 +31,15 @@ class Customer extends User {
       return acc;
     }, 0))
   }
+
+  addBooking(newBooking) {
+    if (!this.bookings.includes(newBooking)) {
+      this.bookings.push(newBooking);
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 export default Customer;
