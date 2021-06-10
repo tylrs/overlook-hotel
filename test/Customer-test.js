@@ -14,15 +14,13 @@ describe('Customer Class', function() {
   });
 
   it('should have default properties for password and isManager', function() {
-    console.log(customer);
-
     expect(customer.password).to.equal('overlook2020');
     expect(customer.isManager).to.equal(false);
   });
-  //
-  // it('should have a default password of overlook2020', function() {
-  //   expect(user.password).to.equal('overlook2020');
-  // });
+
+  it('should take in customer data and assign a username', function() {
+    expect(customer.userName).to.equal('customer1');
+  });
   //
   // it('should have a isManager property with a default value of false', function() {
   //   expect(user.isManager).to.equal(false);
