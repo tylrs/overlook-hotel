@@ -168,3 +168,48 @@ export const roomsData = [
     "costPerNight": 397.02
   },
 ];
+
+export const allRoomsBooked = [
+  {
+    id: '5fwrgu4i7k55hl6t8',
+    userID: 1,
+    date: '2020/01/09',
+    roomNumber: 1,
+    roomServiceCharges: []
+  },
+  {
+    id: '5fwrgu4i7k55hl6tl',
+    userID: 1,
+    date: '2020/01/09',
+    roomNumber: 2,
+    roomServiceCharges: []
+  },
+  {
+    id: '5fwrgu4i7k55hl6tl',
+    userID: 1,
+    date: '2020/01/09',
+    roomNumber: 3,
+    roomServiceCharges: []
+  },
+  {
+    id: '5fwrgu4i7k55hl6tl',
+    userID: 1,
+    date: '2020/01/09',
+    roomNumber: 4,
+    roomServiceCharges: []
+  },
+  {
+    id: '5fwrgu4i7k55hl6tl',
+    userID: 1,
+    date: '2020/01/09',
+    roomNumber: 5,
+    roomServiceCharges: []
+  },
+  {
+    id: '5fwrgu4i7k55hl6tl',
+    userID: 1,
+    date: '2020/01/09',
+    roomNumber: 6,
+    roomServiceCharges: []
+  }
+];
