@@ -3,6 +3,7 @@
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
+import domUpdates from './domUpdates.js'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -12,7 +13,11 @@ import Hotel from './classes/Hotel.js'
 
 let currentCustomer, hotel, currentDate;
 
-// customer = new Customer(customerData[0]);
+// querySelectors
+const futureBookingsSection = document.getElementById('futureBookings');
+const pastBookingsSection = document.getElementById('pastBookings');
+
+
 window.onload = instantiateData();
 
 function instantiateData () {
@@ -21,6 +26,12 @@ function instantiateData () {
   hotel.instantiateCustomers(customerData);
   hotel.updateCustomersDetailedBookings();
   let currentCustomer = hotel.customers[0];
+  populateBookings(currentCustomer, currentDate)
+}
+
+function populateBookings(currentCustomer, currentDate) {
+  domUpdates.renderBookingsCards(futureBookingsSection, currentCustomer, currentDate, 'past')
+  domUpdates.renderBookingsCards(pastBookingsSection, currentCustomer, currentDate, 'future/present')
 }
 
 //querySelectors
