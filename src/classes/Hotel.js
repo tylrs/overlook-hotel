@@ -23,6 +23,3 @@ class Hotel {
 }
 
 export default Hotel;
-//filter through all bookings based on a date
-//return bookings on that date
-//

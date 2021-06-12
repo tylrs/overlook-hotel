@@ -24,7 +24,7 @@ describe('Hotel Class', function() {
     expect(hotel.rooms).to.deep.equal(roomsData);
   });
 
-  it('should have a method to filter rooms based on a date and are not booked', function() {
+  it('should have a method to filter rooms based on a date and their availability', function() {
     expect(hotel.getAvailableRooms('2020/01/09')).to.deep.equal([roomsData[0], roomsData[1], roomsData[2], roomsData[3], roomsData[5]])
   });
 
@@ -40,5 +40,9 @@ describe('Hotel Class', function() {
 
   it('should have a method which filters available rooms by their roomType', function() {
     expect(hotel.filterRoomByType('2021/01/09', 'single room')).to.deep.equal([roomsData[2], roomsData[3], roomsData[4]]);
+  });
+
+  it('should have a method which returns an empty array if no rooms of a requested type are available', function() {
+    expect(hotel.filterRoomByType('2020/02/05', 'residential suite')).to.deep.equal([]);
   });
 })
