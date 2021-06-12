@@ -30,7 +30,9 @@ let domUpdates = {
   renderCalendar(element, currentDate) {
     console.log('okay');
     flatpickr(element, {
-      clickOpens: true
+      defaultDate: currentDate,
+      minDate: currentDate,
+      inline: true
     });
   }
 }
