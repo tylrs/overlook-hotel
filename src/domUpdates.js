@@ -46,7 +46,7 @@ let domUpdates = {
       `
       <article class="booking-card">
         <h5>${room.roomType}</h4>
-        <p>Room Number ${room.roomNumber}</p>
+        <p>Room Number ${room.number}</p>
         <p>Beds: ${room.numBeds} ${room.bedSize}<p>
         <p>$${room.costPerNight}/ night</p>
         <p>Bidet included?</p>
