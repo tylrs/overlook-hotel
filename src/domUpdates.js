@@ -34,6 +34,14 @@ let domUpdates = {
       minDate: currentDate,
       inline: true
     });
+  },
+
+  show(element) {
+    element.classList.remove('hide');
+  },
+
+  hide(element) {
+    element.classList.add('hide');
   }
 }
 

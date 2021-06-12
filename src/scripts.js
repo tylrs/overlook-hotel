@@ -18,11 +18,13 @@ const futureBookingsSection = document.getElementById('futureBookings');
 const pastBookingsSection = document.getElementById('pastBookings');
 const totalSpent = document.getElementById('totalSpent');
 const addNewBookingsButton = document.getElementById('addNewBookingsButton');
-const calendarView = document.getElementById('calendarView');
+const addNewBookingsView = document.getElementById('addNewBookingsView');
+const calendarInput = document.getElementById('calendarInput');
+const dashboard = document.getElementById('dashboard');
 
 
 window.onload = instantiateData();
-addNewBookingsButton.addEventListener('click', populateCalendar)
+addNewBookingsButton.addEventListener('click', renderNewBookingsView)
 
 function instantiateData () {
   currentDate = '2020/02/03';
@@ -40,6 +42,8 @@ function populateDashboard(currentCustomer, currentDate, totalSpent) {
   domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
 }
 
-function populateCalendar() {
-  domUpdates.renderCalendar(calendarView, currentDate);
+function renderNewBookingsView() {
+  domUpdates.renderCalendar(calendarInput, currentDate);
+  domUpdates.show(addNewBookingsView);
+  domUpdates.hide(dashboard)
 }

@@ -12,7 +12,7 @@
     <button type="button" name="button" class="add-new-bookings-button" id="addNewBookingsButton">Add New Booking</button>
   </header>
   <main>
-    <section class="dashboard hide">
+    <section class="dashboard" id="dashboard">
       <section class="future-bookings">
         <h2>Upcoming Bookings</h2>
         <section class="booking-cards-section" id="futureBookings">
@@ -35,9 +35,9 @@
         <p id="totalSpent">$600,000</p>
       </aside>
     </section>
-    <section class="new-bookings"id="addNewBookingsView">
+    <section class="new-bookings hide"id="addNewBookingsView">
       <label for="calendarView">Choose a Date to Search</label>
-      <input type="text" placeholder="Select Date" class="calendarView" id="calendarView" data-input>
+      <input type="text" placeholder="Select Date" class="calendar-input" id="calendarInput" data-input>
       <button id="searchCalendar">Search for Available Rooms</button>
     </section>
   </main>
