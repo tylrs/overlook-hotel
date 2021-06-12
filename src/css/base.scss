@@ -37,6 +37,21 @@ header {
     "past past past totalSpent"
 }
 
+.booking-cards-section {
+  height: 95%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.booking-card {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-width: 25%;
+}
+
 .future-bookings {
   background-color: lightyellow;
   grid-area: future;

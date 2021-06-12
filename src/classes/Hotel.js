@@ -1,7 +1,39 @@
+import Customer from './Customer.js'
+
 class Hotel {
   constructor(bookings, rooms) {
     this.bookings = bookings;
     this.rooms = rooms;
+    this.customers = [];
+  }
+
+  instantiateCustomers(customerData) {
+    customerData.forEach(customerInfo => {
+      let customer = new Customer(customerInfo);
+      this.customers.push(customer);
+    })
+  }
+
+  updateCustomersDetailedBookings() {
+    let detailedBookings = this.getDetailedBookings();
+    this.customers.forEach(customer => {
+      customer.bookings = detailedBookings.filter(booking => {
+        return booking.userID === customer.id;
+      })
+    })
+  }
+
+  getDetailedBookings() {
+    return this.bookings.map(booking => {
+      let foundRoom = this.rooms.find(room => {
+        return room.number === booking.roomNumber;
+      })
+      let newBooking = {
+        ...booking,
+        ...foundRoom
+      }
+      return newBooking;
+    })
   }
 
   getAvailableRooms(date) {

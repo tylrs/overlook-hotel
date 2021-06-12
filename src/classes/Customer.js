@@ -22,17 +22,14 @@ class Customer extends User {
     })
   }
 
-  returnTotalSpent(hotel) {
+  returnTotalSpent() {
     return Math.floor(this.bookings.reduce((acc, booking) => {
-      let foundRoom = hotel.rooms.find(room => {
-        return room.number === booking.roomNumber;
-      })
-      acc += foundRoom.costPerNight;
+      acc += booking.costPerNight;
       return acc;
     }, 0))
   }
 
-  addBooking(newBooking) {
+  addNewBooking(newBooking) {
     if (!this.bookings.includes(newBooking)) {
       this.bookings.push(newBooking);
       return true;
@@ -40,7 +37,7 @@ class Customer extends User {
       return false;
     }
   }
-  
+
 }
 
 export default Customer;
