@@ -9,10 +9,27 @@
 <body>
   <header>
     <h1>The Overlook Hotel</h1>
-    <button type="button" name="button">Add New Booking</button>
+    <button type="button" name="button" class="add-new-bookings-button" id="addNewBookingsButtons">Add New Booking</button>
   </header>
   <main>
+    <section class="dashboard">
+      <section class="user-bookings">
+        <h2>Upcoming Bookings</h2>
+        <div id="futureBookings">
 
+        </div>
+      </section>
+      <section class="user-bookings">
+        <h2>Past Bookings</h2>
+        <div id="pastBookings">
+
+        </div>
+      </section>
+      <aside class="totalSpent">
+        <h3>Total Spent on Bookings:</h3>
+        <p>$600,000</p>
+      </aside>
+    </section>
   </main>
   <script src="bundle.js"></script>
 </body>
