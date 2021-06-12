@@ -14,6 +14,16 @@ main {
   height: 90vh;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-new-bookings-button {
+  height: 50%;
+}
+
 .dashboard {
   height: 100%;
   display: grid;
@@ -32,6 +42,10 @@ main {
   grid-area: past;
 }
 
-.totalSpent {
-  grid-area: totalSpent
+.total-spent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-area: totalSpent;
+  text-align: center;
 }
