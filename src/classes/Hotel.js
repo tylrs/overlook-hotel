@@ -1,7 +1,7 @@
 import Customer from './Customer.js'
 
 class Hotel {
-  constructor(bookings, rooms, customers) {
+  constructor(bookings, rooms) {
     this.bookings = bookings;
     this.rooms = rooms;
     this.customers = [];
@@ -15,10 +15,6 @@ class Hotel {
   }
 
   updateCustomersDetailedBookings() {
-    //iterate through customers
-    //get detailed bookings
-    //filter through bookings
-    //return only bookings.userID === customer.id
     let detailedBookings = this.getDetailedBookings();
     this.customers.forEach(customer => {
       customer.bookings = detailedBookings.filter(booking => {

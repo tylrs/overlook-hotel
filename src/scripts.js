@@ -12,9 +12,16 @@ import Hotel from './classes/Hotel.js'
 
 let currentCustomer, hotel, currentDate;
 
-customer = new Customer(customerData[0]);
-currentDate = '2020/02/03';
-hotel = new Hotel(bookingsData, roomsData);
-// instantiate customer, hotel, currentDate
+// customer = new Customer(customerData[0]);
+window.onload = instantiateData();
+
+function instantiateData () {
+  currentDate = '2020/02/03';
+  hotel = new Hotel(bookingsData, roomsData);
+  hotel.instantiateCustomers(customerData);
+  hotel.updateCustomersDetailedBookings();
+  let currentCustomer = hotel.customers[0];
+}
+
 //querySelectors
 //populate upcoming and past and total spent
