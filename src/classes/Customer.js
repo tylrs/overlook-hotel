@@ -40,6 +40,7 @@ class Customer extends User {
       return false;
     }
   }
+  
 }
 
 export default Customer;
