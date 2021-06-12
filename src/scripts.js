@@ -24,6 +24,7 @@ const calendarInput = document.getElementById('calendarInput');
 const searchCalendar = document.getElementById('searchCalendar');
 const availableRoomView = document.getElementById('availableRoomView');
 const availableRoomsSection = document.getElementById('availableRoomsSection');
+const filterTagsContainer = document.getElementById('filterTagsContainer');
 
 
 window.onload = instantiateData();
@@ -44,6 +45,7 @@ function showAvailableRooms() {
   console.log(searchDate);
   domUpdates.hide(calendarView);
   domUpdates.show(availableRoomView);
+  domUpdates.show(filterTagsContainer);
   domUpdates.renderAvailableRooms(availableRoomsSection, hotel, searchDate);
 }
 
