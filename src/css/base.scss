@@ -47,9 +47,9 @@ header {
   border: 1px solid black;
   display: flex;
   flex-direction: column;
-  // height: 50%;
   justify-content: space-evenly;
-  // width: 25%;
+  align-items: center;
+  min-width: 25%;
 }
 
 .future-bookings {
