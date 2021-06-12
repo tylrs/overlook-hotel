@@ -1,3 +1,5 @@
+import flatpickr from 'flatpickr';
+
 let domUpdates = {
   renderBookingsCards(element, currentCustomer, currentDate, type) {
     element.innerHTML = '';
@@ -23,6 +25,13 @@ let domUpdates = {
 
   renderInnerText(element, data) {
     element.innerText = data;
+  },
+
+  renderCalendar(element, currentDate) {
+    console.log('okay');
+    flatpickr(element, {
+      clickOpens: true
+    });
   }
 }
 
