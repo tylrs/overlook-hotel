@@ -4,7 +4,7 @@ class Hotel {
     this.rooms = rooms;
   }
 
-  returnAvailableRooms(date) {
+  getAvailableRooms(date) {
     let filteredBookings = this.bookings.filter(booking => {
       return booking.date === date;
     }).map(booking => {
@@ -12,6 +12,12 @@ class Hotel {
     })
     return this.rooms.filter(room => {
       return !filteredBookings.includes(room.number)
+    })
+  }
+
+  filterRoomByType(date, type) {
+    return this.getAvailableRooms(date).filter(room => {
+      return room.roomType === type;
     })
   }
 }
