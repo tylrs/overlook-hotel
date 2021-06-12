@@ -23,34 +23,58 @@ export const customerData = [
 
 export const user1BookingsData = [
   {
-    id: '5fwrgu4i7k55hl6t8',
-    userID: 1,
-    date: '2020/02/05',
-    roomNumber: 1,
-    roomServiceCharges: []
+      "id": "5fwrgu4i7k55hl6t8",
+      "userID": 1,
+      "date": "2020/02/05",
+      "roomNumber": 1,
+      "roomServiceCharges": [],
+      "number": 1,
+      "roomType": "residential suite",
+      "bidet": true,
+      "bedSize": "queen",
+      "numBeds": 1,
+      "costPerNight": 358.4
   },
   {
-    id: '5fwrgu4i7k55hl6tl',
-    userID: 1,
-    date: '2020/01/10',
-    roomNumber: 2,
-    roomServiceCharges: []
+      "id": "5fwrgu4i7k55hl6tl",
+      "userID": 1,
+      "date": "2020/01/10",
+      "roomNumber": 2,
+      "roomServiceCharges": [],
+      "number": 2,
+      "roomType": "suite",
+      "bidet": false,
+      "bedSize": "full",
+      "numBeds": 2,
+      "costPerNight": 477.38
   },
   {
-    id: '5fwrgu4i7k55hl6tv',
-    userID: 1,
-    date: '2020/01/19',
-    roomNumber: 3,
-    roomServiceCharges: []
+      "id": "5fwrgu4i7k55hl6tv",
+      "userID": 1,
+      "date": "2020/01/19",
+      "roomNumber": 3,
+      "roomServiceCharges": [],
+      "number": 3,
+      "roomType": "single room",
+      "bidet": false,
+      "bedSize": "king",
+      "numBeds": 1,
+      "costPerNight": 491.14
   },
   {
-    id: '5fwrgu4i7k55hl6v3',
-    userID: 1,
-    date: '2020/02/03',
-    roomNumber: 1,
-    roomServiceCharges: []
-  },
-]
+      "id": "5fwrgu4i7k55hl6u0",
+      "userID": 1,
+      "date": "2020/01/08",
+      "roomNumber": 4,
+      "roomServiceCharges": [],
+      "number": 4,
+      "roomType": "single room",
+      "bidet": false,
+      "bedSize": "queen",
+      "numBeds": 1,
+      "costPerNight": 429.44
+  }
+];
 
 export const bookingsData = [
   {

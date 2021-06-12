@@ -39,15 +39,12 @@ describe('Customer Class', function() {
 
 describe('Customer Class', function() {
   beforeEach (() => {
-    // customer = new Customer(customerData[0]);
-    // currentDate = '2020/02/03';
-    // hotel = new Hotel(bookingsData, roomsData);
     user1BookingsData.forEach(booking => {
       customer.bookings.push(booking);
     })
   })
   it('should have a method which returns past bookings', function() {
-    expect(customer.returnBookings('past', currentDate)).to.deep.equal([user1BookingsData[1], user1BookingsData[2]]);
+    expect(customer.returnBookings('past', currentDate)).to.deep.equal([user1BookingsData[1], user1BookingsData[2], user1BookingsData[3]]);
   });
 
   it('should have a method which returns an empty array if no past bookings are found', function() {
@@ -57,7 +54,7 @@ describe('Customer Class', function() {
 
   it('should have a method which returns an array of current and future bookings based on current date', function() {
 
-    expect(customer.returnBookings('current&future', currentDate)).to.deep.equal([user1BookingsData[0], user1BookingsData[3]]);
+    expect(customer.returnBookings('current&future', currentDate)).to.deep.equal([user1BookingsData[0]]);
   });
 
   it('should have a method which returns an empty array if no current/future bookings are found', function() {
@@ -67,7 +64,7 @@ describe('Customer Class', function() {
 
   it('should have a method to return the total amount a customer spent on bookings', function() {
 
-    expect(customer.returnTotalSpent(hotel)).to.equal(1685);
+    expect(customer.returnTotalSpent()).to.equal(1756);
   });
 
   it('should return 0 if no bookings have been made', function() {

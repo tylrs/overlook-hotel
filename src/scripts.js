@@ -36,6 +36,3 @@ function populateDashboard(currentCustomer, currentDate, totalSpent) {
   console.log(currentCustomer.bookings)
   domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
 }
-
-//querySelectors
-//populate upcoming and past and total spent
