@@ -37,15 +37,15 @@ let domUpdates = {
     });
   },
 
-  renderAvailableRooms(element, hotel, searchDate) {
-    element.innerHTML = '';
+  renderAvailableRooms(availableRoomsSection, filterTagsContainer, hotel, searchDate) {
+    availableRoomsSection.innerHTML = '';
     console.log(hotel.rooms);
     let availableRooms = hotel.getAvailableRooms(searchDate)
     console.log(availableRooms);
     let bidetMessage;
     availableRooms.forEach(room => {
       room.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
-      element.innerHTML +=
+      availableRoomsSection.innerHTML +=
       `
       <article class="booking-card">
         <h5>${room.roomType}</h4>
@@ -55,6 +55,24 @@ let domUpdates = {
         <p>Bidet included?</p>
         <p>${bidetMessage}</p>
       </article>
+      `
+    })
+    this.renderAvailableTags(filterTagsContainer, availableRooms);
+  },
+
+  renderAvailableTags(container, availableRooms) {
+    container.innerHTML = '';
+    let tags = availableRooms.map(room => {
+      return room.roomType;
+    })
+    let uniqueTags = [...new Set(tags)];
+    uniqueTags.forEach(tag => {
+      container.innerHTML +=
+      `
+      <li class="">
+				<input type="checkbox" name="tags" id="${tag}" value="${tag}" />
+				<label for="${tag}" class="tags">${tag}</label>
+      </li>
       `
     })
   },
