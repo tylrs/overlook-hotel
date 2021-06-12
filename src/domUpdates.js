@@ -13,6 +13,10 @@ let domUpdates = {
         </article>
       `
     })
+  },
+
+  renderInnerText(element, data) {
+    element.innerText = data;
   }
 }
 

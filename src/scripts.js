@@ -16,6 +16,7 @@ let currentCustomer, hotel, currentDate;
 // querySelectors
 const futureBookingsSection = document.getElementById('futureBookings');
 const pastBookingsSection = document.getElementById('pastBookings');
+const totalSpent = document.getElementById('totalSpent');
 
 
 window.onload = instantiateData();
@@ -26,12 +27,14 @@ function instantiateData () {
   hotel.instantiateCustomers(customerData);
   hotel.updateCustomersDetailedBookings();
   let currentCustomer = hotel.customers[0];
-  populateBookings(currentCustomer, currentDate)
+  populateDashboard(currentCustomer, currentDate, totalSpent)
 }
 
-function populateBookings(currentCustomer, currentDate) {
+function populateDashboard(currentCustomer, currentDate, totalSpent) {
   domUpdates.renderBookingsCards(futureBookingsSection, currentCustomer, currentDate, 'past')
   domUpdates.renderBookingsCards(pastBookingsSection, currentCustomer, currentDate, 'future/present')
+  console.log(currentCustomer.bookings)
+  domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
 }
 
 //querySelectors
