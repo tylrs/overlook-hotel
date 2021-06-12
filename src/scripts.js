@@ -14,25 +14,33 @@ import Hotel from './classes/Hotel.js'
 let currentCustomer, hotel, currentDate;
 
 // querySelectors
+const dashboard = document.getElementById('dashboard');
 const futureBookingsSection = document.getElementById('futureBookings');
 const pastBookingsSection = document.getElementById('pastBookings');
 const totalSpent = document.getElementById('totalSpent');
 const addNewBookingsButton = document.getElementById('addNewBookingsButton');
-const addNewBookingsView = document.getElementById('addNewBookingsView');
+const calendarView = document.getElementById('calendarView');
 const calendarInput = document.getElementById('calendarInput');
-const dashboard = document.getElementById('dashboard');
+const searchCalendar = document.getElementById('searchCalendar');
 
 
 window.onload = instantiateData();
-addNewBookingsButton.addEventListener('click', renderNewBookingsView)
+addNewBookingsButton.addEventListener('click', renderNewBookingsView);
+searchCalendar.addEventListener('click', retrieveAvailableRooms);
 
-function instantiateData () {
+function instantiateData() {
   currentDate = '2020/02/03';
   hotel = new Hotel(bookingsData, roomsData);
   hotel.instantiateCustomers(customerData);
   hotel.updateCustomersDetailedBookings();
   let currentCustomer = hotel.customers[0];
   populateDashboard(currentCustomer, currentDate, totalSpent)
+}
+
+function retrieveAvailableRooms() {
+  let date = calendarInput.value;
+  console.log(date);
+  domUpdates.hide(calendarView)
 }
 
 function populateDashboard(currentCustomer, currentDate, totalSpent) {
@@ -44,6 +52,6 @@ function populateDashboard(currentCustomer, currentDate, totalSpent) {
 
 function renderNewBookingsView() {
   domUpdates.renderCalendar(calendarInput, currentDate);
-  domUpdates.show(addNewBookingsView);
+  domUpdates.show(calendarView);
   domUpdates.hide(dashboard)
 }
