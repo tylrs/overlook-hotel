@@ -14,15 +14,30 @@ class Hotel {
     })
   }
 
-  updateCustomersBookingsAndRooms() {
-    //combine data using corresponding rooms
-    //sort this data into each customer
-    //combine
-    //output is an array of new objects
-    //iterate through all bookings using map
-    //forEach booking find the corresponding roomNumber in the rooms data
-    //add new properties on the booking from rooms data
-    //return the new booking object
+  updateCustomersDetailedBookings() {
+    //iterate through customers
+    //get detailed bookings
+    //filter through bookings
+    //return only bookings.userID === customer.id
+    let detailedBookings = this.getDetailedBookings();
+    this.customers.forEach(customer => {
+      customer.bookings = detailedBookings.filter(booking => {
+        return booking.userID === customer.id;
+      })
+    })
+  }
+
+  getDetailedBookings() {
+    return this.bookings.map(booking => {
+      let foundRoom = this.rooms.find(room => {
+        return room.number === booking.roomNumber;
+      })
+      let newBooking = {
+        ...booking,
+        ...foundRoom
+      }
+      return newBooking;
+    })
   }
 
   getAvailableRooms(date) {

@@ -1,6 +1,6 @@
 import chai from 'chai';
 const expect = chai.expect;
-import {customerData, roomsData, bookingsData, allRoomsBooked} from './sample-data.js'
+import {customerData, user1BookingsData, roomsData, bookingsData, allRoomsBooked, detailedBookings} from './sample-data.js'
 import Customer from '../src/classes/Customer.js'
 import Hotel from '../src/classes/Hotel.js'
 
@@ -30,8 +30,13 @@ describe('Hotel Class', function() {
     expect(hotel.customers.length).to.equal(customerData.length);
   });
 
-  it('should have a method to instantiate customers with their corresponding bookings and rooms', function() {
-    hotel.updateCustomersBookingsAndRooms());
+  it('should have a method to combine bookings and rooms data', function() {
+    expect(hotel.getDetailedBookings()).to.deep.equal(detailedBookings);
+  });
+
+  it('should have a method to update customers with their corresponding bookings and rooms', function() {
+    hotel.instantiateCustomers(customerData);
+    hotel.updateCustomersDetailedBookings();
 
     expect(hotel.customers[0].bookings.length).to.equal(user1BookingsData.length);
   });
