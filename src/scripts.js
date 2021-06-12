@@ -41,6 +41,7 @@ function instantiateData() {
 
 function showAvailableRooms() {
   let searchDate = calendarInput.value;
+  console.log(searchDate);
   domUpdates.hide(calendarView);
   domUpdates.show(availableRoomView);
   domUpdates.renderAvailableRooms(availableRoomsSection, hotel, searchDate);

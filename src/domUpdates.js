@@ -32,13 +32,16 @@ let domUpdates = {
     flatpickr(element, {
       defaultDate: currentDate,
       minDate: currentDate,
-      inline: true
+      inline: true,
+      dateFormat: "Y/m/d"
     });
   },
 
   renderAvailableRooms(element, hotel, searchDate) {
     element.innerHTML = '';
+    console.log(hotel.rooms);
     let availableRooms = hotel.getAvailableRooms(searchDate)
+    console.log(availableRooms);
     let bidetMessage;
     availableRooms.forEach(room => {
       room.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'

@@ -85,6 +85,18 @@ header {
 
 }
 
+.available-room-view {
+  height: 100%;
+}
+
+.available-cards-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
 .hide {
   display: none;
 }
