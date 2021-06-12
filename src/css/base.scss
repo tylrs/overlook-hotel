@@ -1,8 +1,37 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
+$primary-background: white;
 @import '_reset.scss';
 
 body {
   background: $primary-background;
+}
+
+header {
+  height: 10vh;
+}
+
+main {
+  height: 90vh;
+}
+
+.dashboard {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "future future future totalSpent"
+    "past past past totalSpent"
+}
+
+.future-bookings {
+  grid-area: future;
+}
+
+.past-bookings {
+  grid-area: past;
+}
+
+.totalSpent {
+  grid-area: totalSpent
 }
