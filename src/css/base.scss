@@ -15,8 +15,11 @@ main {
 }
 
 header {
+  background-color: lightgreen;
   display: flex;
   justify-content: space-between;
+  padding-left: 2%;
+  padding-right: 2%;
   align-items: center;
 }
 
@@ -35,14 +38,17 @@ header {
 }
 
 .future-bookings {
+  background-color: lightyellow;
   grid-area: future;
 }
 
 .past-bookings {
+  background-color: lightblue;
   grid-area: past;
 }
 
 .total-spent {
+  background-color: lightpink;
   display: flex;
   flex-direction: column;
   justify-content: center;
