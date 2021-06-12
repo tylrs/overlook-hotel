@@ -81,7 +81,7 @@ describe('Customer Class', function() {
       roomServiceCharges: []
     };
 
-    expect(customer.addBooking(newBooking)).to.equal(true);
+    expect(customer.addNewBooking(newBooking)).to.equal(true);
     expect(customer.bookings[4]).to.deep.equal(newBooking);
   });
 
@@ -94,9 +94,9 @@ describe('Customer Class', function() {
       roomNumber: 6,
       roomServiceCharges: []
     };
-    customer.addBooking(newBooking);
+    customer.addNewBooking(newBooking);
 
-    expect(customer.addBooking(newBooking)).to.equal(false);
+    expect(customer.addNewBooking(newBooking)).to.equal(false);
   });
 
 });

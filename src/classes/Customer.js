@@ -32,7 +32,7 @@ class Customer extends User {
     }, 0))
   }
 
-  addBooking(newBooking) {
+  addNewBooking(newBooking) {
     if (!this.bookings.includes(newBooking)) {
       this.bookings.push(newBooking);
       return true;
@@ -40,7 +40,7 @@ class Customer extends User {
       return false;
     }
   }
-  
+
 }
 
 export default Customer;
