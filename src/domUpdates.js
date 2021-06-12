@@ -36,6 +36,26 @@ let domUpdates = {
     });
   },
 
+  renderAvailableRooms(element, hotel, searchDate) {
+    element.innerHTML = '';
+    let availableRooms = hotel.getAvailableRooms(searchDate)
+    let bidetMessage;
+    availableRooms.forEach(room => {
+      room.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
+      element.innerHTML +=
+      `
+      <article class="booking-card">
+        <h5>${room.roomType}</h4>
+        <p>Room Number ${room.roomNumber}</p>
+        <p>Beds: ${room.numBeds} ${room.bedSize}<p>
+        <p>$${room.costPerNight}/ night</p>
+        <p>Bidet included?</p>
+        <p>${bidetMessage}</p>
+      </article>
+      `
+    })
+  },
+
   show(element) {
     element.classList.remove('hide');
   },

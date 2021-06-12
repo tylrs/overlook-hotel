@@ -22,11 +22,13 @@ const addNewBookingsButton = document.getElementById('addNewBookingsButton');
 const calendarView = document.getElementById('calendarView');
 const calendarInput = document.getElementById('calendarInput');
 const searchCalendar = document.getElementById('searchCalendar');
+const availableRoomView = document.getElementById('availableRoomView');
+const availableRoomsSection = document.getElementById('availableRoomsSection');
 
 
 window.onload = instantiateData();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
-searchCalendar.addEventListener('click', retrieveAvailableRooms);
+searchCalendar.addEventListener('click', showAvailableRooms);
 
 function instantiateData() {
   currentDate = '2020/02/03';
@@ -37,10 +39,11 @@ function instantiateData() {
   populateDashboard(currentCustomer, currentDate, totalSpent)
 }
 
-function retrieveAvailableRooms() {
-  let date = calendarInput.value;
-  console.log(date);
-  domUpdates.hide(calendarView)
+function showAvailableRooms() {
+  let searchDate = calendarInput.value;
+  domUpdates.hide(calendarView);
+  domUpdates.show(availableRoomView);
+  domUpdates.renderAvailableRooms(availableRoomsSection, hotel, searchDate);
 }
 
 function populateDashboard(currentCustomer, currentDate, totalSpent) {
