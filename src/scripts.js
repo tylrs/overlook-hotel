@@ -45,7 +45,6 @@ function instantiateData() {
 }
 
 function determineViewToGoBackTo(event) {
-  console.log(event.target.nextElementSibling);
   let header = event.target.nextElementSibling.innerText;
   if (header.includes('Available')) {
     renderNewBookingsView();
@@ -56,12 +55,10 @@ function determineViewToGoBackTo(event) {
 
 function showAvailableRooms() {
   let searchDate = calendarInput.value;
-  console.log(searchDate);
   domUpdates.hide(calendarView);
   domUpdates.show(availableRoomView);
   domUpdates.show(filterTagsSection);
   availableRooms = hotel.getAvailableRooms(searchDate);
-  console.log(availableRooms)
   domUpdates.renderAvailableRooms(availableRoomsSection, availableRooms, searchDate);
   domUpdates.renderAvailableTags(filterTagsContainer, availableRooms)
 }
@@ -69,7 +66,6 @@ function showAvailableRooms() {
 function showFilteredRooms() {
   event.preventDefault();
   let tagRadioButtons = document.querySelectorAll('input[type="radio"]');
-  console.log(tagRadioButtons)
   domUpdates.renderFilteredRooms(availableRoomsSection, availableRooms, tagRadioButtons, hotel);
   domUpdates.hide(filterTagsSection);
 }
@@ -77,12 +73,12 @@ function showFilteredRooms() {
 function populateDashboard(currentCustomer, currentDate, totalSpent) {
   domUpdates.renderBookingsCards(futureBookingsSection, currentCustomer, currentDate, 'past')
   domUpdates.renderBookingsCards(pastBookingsSection, currentCustomer, currentDate, 'future/present')
-  console.log(currentCustomer.bookings)
   domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
 }
 
 function renderNewBookingsView() {
   domUpdates.renderCalendar(calendarInput, currentDate);
   domUpdates.show(calendarView);
-  domUpdates.hide(dashboard)
+  domUpdates.hide(dashboard);
+  domUpdates.hide(addNewBookingsButton);
 }

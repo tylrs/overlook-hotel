@@ -4,7 +4,6 @@ let domUpdates = {
   renderBookingsCards(element, currentCustomer, currentDate, type) {
     element.innerHTML = '';
     let bookings = currentCustomer.returnBookings(type, currentDate)
-    console.log(bookings[0]);
     let bidetMessage;
     bookings.forEach(booking => {
       booking.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
@@ -28,7 +27,6 @@ let domUpdates = {
   },
 
   renderCalendar(element, currentDate) {
-    console.log('okay');
     flatpickr(element, {
       defaultDate: currentDate,
       minDate: currentDate,
@@ -41,8 +39,6 @@ let domUpdates = {
     availableRoomsSection.innerHTML = '';
     let header = document.querySelector('#roomSearchHeader h2');
     header.innerText = 'Available Rooms';
-    console.log(header);
-    console.log(availableRooms);
     let bidetMessage;
     availableRooms.forEach(room => {
       room.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
@@ -81,19 +77,14 @@ let domUpdates = {
   renderFilteredRooms(availableRoomsSection, availableRooms, tagRadioButtons, hotel) {
     availableRoomsSection.innerHTML = ''
     let header = document.querySelector('#roomSearchHeader h2');
-    console.log(tagRadioButtons);;
     let selectedType;
     tagRadioButtons.forEach(tag => {
       tag.checked ? selectedType = tag.value : null;
       tag.checked = false;
     })
-    console.log(availableRoomsSection);
-    console.log(selectedType);
-    console.log(availableRooms);
     header.innerText = `Filtered by: ${selectedType}`;
     let filteredByType = hotel.filterRoomByType(availableRooms, selectedType);
     let bidetMessage;
-    console.log(filteredByType)
     filteredByType.forEach(room => {
       room.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
       availableRoomsSection.innerHTML +=
