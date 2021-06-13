@@ -45,7 +45,13 @@ function instantiateData() {
 }
 
 function determineViewToGoBackTo(event) {
-  console.log(event);
+  console.log(event.target.nextElementSibling);
+  let header = event.target.nextElementSibling.innerText;
+  if (header.includes('Available')) {
+    renderNewBookingsView();
+  } else {
+    showAvailableRooms();
+  }
 }
 
 function showAvailableRooms() {
