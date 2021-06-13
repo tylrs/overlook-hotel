@@ -100,6 +100,20 @@ header {
   gap: 2rem;
 }
 
+.login-view {
+  height: 100%;
+  width: 100%;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
 .hide {
   display: none;
 }
