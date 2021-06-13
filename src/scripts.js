@@ -138,6 +138,7 @@ function displayHomeView() {
   instantiateCustomerLogin(currentCustomer);
   domUpdates.hide(availableRoomView)
   domUpdates.show(dashboard);
+  domUpdates.show(addNewBookingsButton);
 }
 
 function formatPost() {
@@ -164,8 +165,20 @@ function showAvailableRooms() {
   domUpdates.show(availableRoomView);
   domUpdates.show(filterTagsSection);
   availableRooms = hotel.getAvailableRooms(searchDate);
-  domUpdates.renderAvailableRooms(availableRoomsSection, availableRooms, searchDate);
-  domUpdates.renderAvailableTags(filterTagsContainer, availableRooms)
+  if (availableRooms.length) {
+    domUpdates.renderAvailableRooms(availableRoomsSection, availableRooms, searchDate);
+    domUpdates.renderAvailableTags(filterTagsContainer, availableRooms)
+  } else {
+    let message = 'Sorry, there were no available rooms for that day'
+    displayErrorMessage(message)
+    const returnToCalendar = setTimeout(() => {
+      renderNewBookingsView();
+    }, 4000)
+  }
+}
+
+function displayErrorMessage() {
+  console.log('error');
 }
 
 function showFilteredRooms() {
