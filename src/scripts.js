@@ -35,9 +35,20 @@ addNewBookingsButton.addEventListener('click', renderNewBookingsView);
 searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
 goBackButton.addEventListener('click', determineViewToGoBackTo);
+availableRoomsSection.addEventListener('click', displayClickedRoom);
 
 function fetchAllData() {
   return Promise.all([fetchApiData('customers'), fetchApiData('bookings'), fetchApiData('rooms')]);
+}
+
+function displayClickedRoom(event) {
+  if (event.target.closest('article')) {
+    let selectedRoom = availableRooms.find(room => {
+      return room.number === parseInt(event.target.closest('article').id);
+    })
+    domUpdates.hide(filterTagsSection);
+    domUpdates.displayRoomView(availableRoomsSection, selectedRoom);
+  }
 }
 
 function instantiateData() {
@@ -56,7 +67,7 @@ function instantiateData() {
     })
 }
 
-function postNewBooking() {
+function postNewBooking(data) {
   postApiData(data)
   .then(response => {
     if (!response.ok) {

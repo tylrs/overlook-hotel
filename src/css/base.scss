@@ -46,7 +46,8 @@ header {
   grid-column-gap: 2rem;
 }
 
-.booking-card {
+.booking-card,
+.room-card {
   border: 1px solid black;
   display: flex;
   flex-direction: column;
