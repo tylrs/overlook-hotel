@@ -39,8 +39,11 @@ let domUpdates = {
 
   renderAvailableRooms(availableRoomsSection, availableRooms, searchDate) {
     availableRoomsSection.innerHTML = '';
-    let bidetMessage;
+    let header = document.querySelector('#roomSearchHeader h2');
+    header.innerText = 'Available Rooms';
+    console.log(header);
     console.log(availableRooms);
+    let bidetMessage;
     availableRooms.forEach(room => {
       room.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
       availableRoomsSection.innerHTML +=
@@ -77,14 +80,17 @@ let domUpdates = {
 
   renderFilteredRooms(availableRoomsSection, availableRooms, tagRadioButtons, hotel) {
     availableRoomsSection.innerHTML = ''
+    let header = document.querySelector('#roomSearchHeader h2');
     console.log(tagRadioButtons);;
     let selectedType;
     tagRadioButtons.forEach(tag => {
       tag.checked ? selectedType = tag.value : null;
       tag.checked = false;
     })
+    console.log(availableRoomsSection);
     console.log(selectedType);
     console.log(availableRooms);
+    header.innerText = `Filtered by: ${selectedType}`;
     let filteredByType = hotel.filterRoomByType(availableRooms, selectedType);
     let bidetMessage;
     console.log(filteredByType)

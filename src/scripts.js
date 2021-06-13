@@ -27,13 +27,13 @@ const availableRoomsSection = document.getElementById('availableRoomsSection');
 const filterTagsSection = document.getElementById('filterTagsSection');
 const filterTagsContainer = document.getElementById('filterTagsContainer');
 const filterRoomTypeButton = document.getElementById('filterRoomTypeButton');
-const goBackCalendarButton = document.getElementById('goBackCalendarButton');
+const goBackCalendarButton = document.getElementById('goBackButton');
 
 window.onload = instantiateData();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
 searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
-goBackCalendarButton.addEventListener('click', renderNewBookingsView);
+goBackButton.addEventListener('click', determineViewToGoBackTo);
 
 function instantiateData() {
   currentDate = '2020/02/03';
@@ -41,7 +41,11 @@ function instantiateData() {
   hotel.instantiateCustomers(customerData);
   hotel.updateCustomersDetailedBookings();
   let currentCustomer = hotel.customers[0];
-  populateDashboard(currentCustomer, currentDate, totalSpent)
+  populateDashboard(currentCustomer, currentDate, totalSpent);
+}
+
+function determineViewToGoBackTo(event) {
+  console.log(event);
 }
 
 function showAvailableRooms() {
@@ -61,6 +65,7 @@ function showFilteredRooms() {
   let tagRadioButtons = document.querySelectorAll('input[type="radio"]');
   console.log(tagRadioButtons)
   domUpdates.renderFilteredRooms(availableRoomsSection, availableRooms, tagRadioButtons, hotel);
+  domUpdates.hide(filterTagsSection);
 }
 
 function populateDashboard(currentCustomer, currentDate, totalSpent) {
