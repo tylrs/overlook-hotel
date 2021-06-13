@@ -122,11 +122,11 @@ let domUpdates = {
     `
   },
 
-  displayErrorMessage(element, message) {
+  displayMessage(element, message) {
     element.innerHTML = `<p class="error-message">${message}</p>`
     const timeout = setTimeout(() => {
       element.innerHTML = ''
-    }, 4000)
+    }, 5000)
   },
 
   show(element) {

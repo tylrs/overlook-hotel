@@ -125,9 +125,12 @@ function postNewBooking() {
     }
   })
   .then(data => {
+    let message = "Congratulations, a new booking was added!"
+    domUpdates.displayMessage(availableRoomsSection, message)
     domUpdates.hide(submitBookingButton)
-    displayHomeView();
-    console.log(data);
+    const timeout = setTimeout(() => {
+      displayHomeView();
+    }, 4000)
   })
   .catch(error => {
     console.log(error);
@@ -171,7 +174,7 @@ function showAvailableRooms() {
   } else {
     let message = 'Sorry, there were no available rooms for that day'
     domUpdates.displayErrorMessage(availableRoomsSection, message)
-    const returnToCalendar = setTimeout(() => {
+    const timeout = setTimeout(() => {
       renderNewBookingsView();
     }, 4000)
   }
