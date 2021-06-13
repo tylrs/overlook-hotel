@@ -170,15 +170,11 @@ function showAvailableRooms() {
     domUpdates.renderAvailableTags(filterTagsContainer, availableRooms)
   } else {
     let message = 'Sorry, there were no available rooms for that day'
-    displayErrorMessage(message)
+    domUpdates.displayErrorMessage(availableRoomsSection, message)
     const returnToCalendar = setTimeout(() => {
       renderNewBookingsView();
     }, 4000)
   }
-}
-
-function displayErrorMessage() {
-  console.log('error');
 }
 
 function showFilteredRooms() {

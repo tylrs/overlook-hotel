@@ -122,6 +122,13 @@ let domUpdates = {
     `
   },
 
+  displayErrorMessage(element, message) {
+    element.innerHTML = `<p class="error-message">${message}</p>`
+    const timeout = setTimeout(() => {
+      element.innerHTML = ''
+    }, 4000)
+  },
+
   show(element) {
     element.classList.remove('hide');
   },
