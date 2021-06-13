@@ -11,7 +11,7 @@ import {customerData, roomsData, bookingsData, allRoomsBooked} from '../test/sam
 import Customer from './classes/Customer.js'
 import Hotel from './classes/Hotel.js'
 
-let currentCustomer, hotel, currentDate;
+let currentCustomer, hotel, currentDate, availableRooms;
 
 // querySelectors
 const dashboard = document.getElementById('dashboard');
@@ -26,11 +26,12 @@ const availableRoomView = document.getElementById('availableRoomView');
 const availableRoomsSection = document.getElementById('availableRoomsSection');
 const filterTagsSection = document.getElementById('filterTagsSection');
 const filterTagsContainer = document.getElementById('filterTagsContainer');
-
+const filterRoomTypeButton = document.getElementById('filterRoomTypeButton');
 
 window.onload = instantiateData();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
 searchCalendar.addEventListener('click', showAvailableRooms);
+filterRoomTypeButton.addEventListener('click', showFilteredRooms);
 
 function instantiateData() {
   currentDate = '2020/02/03';
@@ -47,7 +48,16 @@ function showAvailableRooms() {
   domUpdates.hide(calendarView);
   domUpdates.show(availableRoomView);
   domUpdates.show(filterTagsSection);
-  domUpdates.renderAvailableRooms(availableRoomsSection, filterTagsContainer, hotel, searchDate);
+  availableRooms = hotel.getAvailableRooms(searchDate);
+  domUpdates.renderAvailableRooms(availableRoomsSection, availableRooms, searchDate);
+  domUpdates.renderAvailableTags(filterTagsContainer, availableRooms)
+}
+
+function showFilteredRooms() {
+  event.preventDefault();
+  let tagCheckBoxes = document.querySelectorAll('input[type="checkbox"]');
+  console.log(tagCheckBoxes)
+
 }
 
 function populateDashboard(currentCustomer, currentDate, totalSpent) {

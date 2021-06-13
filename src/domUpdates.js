@@ -37,18 +37,16 @@ let domUpdates = {
     });
   },
 
-  renderAvailableRooms(availableRoomsSection, filterTagsContainer, hotel, searchDate) {
+  renderAvailableRooms(availableRoomsSection, availableRooms, searchDate) {
     availableRoomsSection.innerHTML = '';
-    console.log(hotel.rooms);
-    let availableRooms = hotel.getAvailableRooms(searchDate)
-    console.log(availableRooms);
     let bidetMessage;
     availableRooms.forEach(room => {
       room.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
       availableRoomsSection.innerHTML +=
       `
       <article class="booking-card">
-        <h5>${room.roomType}</h4>
+        <h4>${searchDate}</h4>
+        <h5>${room.roomType}</h5>
         <p>Room Number ${room.number}</p>
         <p>Beds: ${room.numBeds} ${room.bedSize}<p>
         <p>$${room.costPerNight}/ night</p>
@@ -57,7 +55,6 @@ let domUpdates = {
       </article>
       `
     })
-    this.renderAvailableTags(filterTagsContainer, availableRooms);
   },
 
   renderAvailableTags(container, availableRooms) {
@@ -75,6 +72,10 @@ let domUpdates = {
       </li>
       `
     })
+  },
+
+  renderFilteredRooms() {
+
   },
 
   show(element) {
