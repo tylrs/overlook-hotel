@@ -36,14 +36,25 @@ searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
 goBackButton.addEventListener('click', determineViewToGoBackTo);
 
+function fetchAllData() {
+  return Promise.all([fetchApiData('customers'), fetchApiData('bookings'), fetchApiData('rooms')]);
+}
+
 function instantiateData() {
   currentDate = '2020/02/03';
-  
-  hotel = new Hotel(bookingsData, roomsData);
-  hotel.instantiateCustomers(customerData);
-  hotel.updateCustomersDetailedBookings();
-  let currentCustomer = hotel.customers[0];
-  populateDashboard(currentCustomer, currentDate, totalSpent);
+  fetchAllData()
+    .then(promise => {
+      console.log(promise[0]['customers'])
+      hotel = new Hotel(promise[1]['bookings'], promise[2]['rooms'])
+      hotel.instantiateCustomers(promise[0]['customers'])
+      hotel.instantiateCustomers(customerData);
+      hotel.updateCustomersDetailedBookings();
+      let currentCustomer = hotel.customers[0];
+      populateDashboard(currentCustomer, currentDate, totalSpent);
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 }
 
 function determineViewToGoBackTo(event) {
