@@ -10,7 +10,7 @@ export const fetchApiData = (type) => {
 };
 
 export const fetchCustomer = (id) => {
-  fetch(`http://localhost:3001/api/v1/customers/:${id}`)
+  return fetch(`http://localhost:3001/api/v1/customers/${id}`)
     .then(response => {
       if (!response.ok) {
         throw new Error(response.statusMessage);
