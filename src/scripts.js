@@ -12,7 +12,7 @@ import {customerData, roomsData, bookingsData, allRoomsBooked} from '../test/sam
 import Customer from './classes/Customer.js'
 import Hotel from './classes/Hotel.js'
 
-let currentCustomer, hotel, currentDate, availableRooms;
+let currentCustomer, hotel, currentDate, availableRooms, selectedRoom;
 
 // querySelectors
 const dashboard = document.getElementById('dashboard');
@@ -29,6 +29,7 @@ const filterTagsSection = document.getElementById('filterTagsSection');
 const filterTagsContainer = document.getElementById('filterTagsContainer');
 const filterRoomTypeButton = document.getElementById('filterRoomTypeButton');
 const goBackCalendarButton = document.getElementById('goBackButton');
+const submitBookingButton = document.getElementById('submitBookingButton');
 
 window.onload = instantiateData();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
@@ -36,6 +37,7 @@ searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
 goBackButton.addEventListener('click', determineViewToGoBackTo);
 availableRoomsSection.addEventListener('click', displayClickedRoom);
+submitBookingButton.addEventListener('click', postNewBooking)
 
 function fetchAllData() {
   return Promise.all([fetchApiData('customers'), fetchApiData('bookings'), fetchApiData('rooms')]);
@@ -43,10 +45,11 @@ function fetchAllData() {
 
 function displayClickedRoom(event) {
   if (event.target.closest('article')) {
-    let selectedRoom = availableRooms.find(room => {
+    selectedRoom = availableRooms.find(room => {
       return room.number === parseInt(event.target.closest('article').id);
     })
     domUpdates.hide(filterTagsSection);
+    domUpdates.show(submitBookingButton);
     domUpdates.displayRoomView(availableRoomsSection, selectedRoom);
   }
 }
@@ -59,7 +62,7 @@ function instantiateData() {
       hotel.instantiateCustomers(promise[0]['customers'])
       hotel.instantiateCustomers(customerData);
       hotel.updateCustomersDetailedBookings();
-      let currentCustomer = hotel.customers[1];
+      currentCustomer = hotel.customers[1];
       populateDashboard(currentCustomer, currentDate, totalSpent);
     })
     .catch((error) => {
@@ -67,21 +70,34 @@ function instantiateData() {
     })
 }
 
-function postNewBooking(data) {
-  postApiData(data)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(response.statusMessage)
-    } else {
-      return response.json();
-    }
-  })
-  .then(data => {
-    console.log(data);
-  })
-  .catch(error => {
-    console.log(error);
-  })
+function postNewBooking() {
+  let data = formatPost();
+  console.log(data)
+  // postApiData(data)
+  // .then(response => {
+  //   if (!response.ok) {
+  //     throw new Error(response.statusMessage)
+  //   } else {
+  //     return response.json();
+  //   }
+  // })
+  // .then(data => {
+  //   console.log(data);
+  // })
+  // .catch(error => {
+  //   console.log(error);
+  // })
+}
+
+function formatPost() {
+  console.log(selectedRoom)
+  console.log(currentCustomer)
+  let submitData = {
+    userID: currentCustomer.id,
+    date: selectedRoom.dateAvailable,
+    roomNumber: selectedRoom.number
+  }
+  return submitData;
 }
 
 function determineViewToGoBackTo(event) {
