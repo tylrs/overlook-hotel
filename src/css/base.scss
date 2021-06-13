@@ -41,10 +41,13 @@ header {
 .booking-cards-section {
   height: 95%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  overflow-x: scroll;
+  grid-column-gap: 2rem;
 }
 
-.booking-card {
+.booking-card,
+.room-card {
   border: 1px solid black;
   display: flex;
   flex-direction: column;

@@ -4,6 +4,7 @@
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 import domUpdates from './domUpdates.js'
+import {fetchApiData, postApiData} from './apiCalls.js'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -11,7 +12,7 @@ import {customerData, roomsData, bookingsData, allRoomsBooked} from '../test/sam
 import Customer from './classes/Customer.js'
 import Hotel from './classes/Hotel.js'
 
-let currentCustomer, hotel, currentDate, availableRooms;
+let currentCustomer, hotel, currentDate, availableRooms, selectedRoom;
 
 // querySelectors
 const dashboard = document.getElementById('dashboard');
@@ -28,20 +29,80 @@ const filterTagsSection = document.getElementById('filterTagsSection');
 const filterTagsContainer = document.getElementById('filterTagsContainer');
 const filterRoomTypeButton = document.getElementById('filterRoomTypeButton');
 const goBackCalendarButton = document.getElementById('goBackButton');
+const submitBookingButton = document.getElementById('submitBookingButton');
 
 window.onload = instantiateData();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
 searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
 goBackButton.addEventListener('click', determineViewToGoBackTo);
+availableRoomsSection.addEventListener('click', displayClickedRoom);
+submitBookingButton.addEventListener('click', postNewBooking)
+
+function fetchAllData() {
+  return Promise.all([fetchApiData('customers'), fetchApiData('bookings'), fetchApiData('rooms')]);
+}
+
+function displayClickedRoom(event) {
+  if (event.target.closest('article')) {
+    selectedRoom = availableRooms.find(room => {
+      return room.number === parseInt(event.target.closest('article').id);
+    })
+    domUpdates.hide(filterTagsSection);
+    domUpdates.show(submitBookingButton);
+    domUpdates.displayRoomView(availableRoomsSection, selectedRoom);
+  }
+}
 
 function instantiateData() {
   currentDate = '2020/02/03';
-  hotel = new Hotel(bookingsData, roomsData);
-  hotel.instantiateCustomers(customerData);
-  hotel.updateCustomersDetailedBookings();
-  let currentCustomer = hotel.customers[0];
-  populateDashboard(currentCustomer, currentDate, totalSpent);
+  fetchAllData()
+    .then(promise => {
+      hotel = new Hotel(promise[1]['bookings'], promise[2]['rooms'])
+      hotel.instantiateCustomers(promise[0]['customers'])
+      hotel.instantiateCustomers(customerData);
+      hotel.updateCustomersDetailedBookings();
+      currentCustomer = hotel.customers[1];
+      populateDashboard(currentCustomer, currentDate, totalSpent);
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
+function postNewBooking() {
+  let data = formatPost();
+  postApiData(data)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(response.statusMessage)
+    } else {
+      return response.json();
+    }
+  })
+  .then(data => {
+    domUpdates.hide(submitBookingButton)
+    displayHomeView();
+    console.log(data);
+  })
+  .catch(error => {
+    console.log(error);
+  })
+}
+
+function displayHomeView() {
+  instantiateData();
+  domUpdates.hide(availableRoomView)
+  domUpdates.show(dashboard);
+}
+
+function formatPost() {
+  let submitData = {
+    userID: currentCustomer.id,
+    date: selectedRoom.dateAvailable,
+    roomNumber: selectedRoom.number
+  }
+  return submitData;
 }
 
 function determineViewToGoBackTo(event) {
@@ -71,8 +132,8 @@ function showFilteredRooms() {
 }
 
 function populateDashboard(currentCustomer, currentDate, totalSpent) {
-  domUpdates.renderBookingsCards(futureBookingsSection, currentCustomer, currentDate, 'past')
-  domUpdates.renderBookingsCards(pastBookingsSection, currentCustomer, currentDate, 'future/present')
+  domUpdates.renderBookingsCards(futureBookingsSection, currentCustomer, currentDate, 'future/present')
+  domUpdates.renderBookingsCards(pastBookingsSection, currentCustomer, currentDate, 'past')
   domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
 }
 

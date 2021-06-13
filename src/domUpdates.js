@@ -44,7 +44,7 @@ let domUpdates = {
       room.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
       availableRoomsSection.innerHTML +=
       `
-      <article class="booking-card">
+      <article class="room-card" id="${room.number}">
         <h4>${searchDate}</h4>
         <h5>${room.roomType}</h5>
         <p>Room Number ${room.number}</p>
@@ -89,7 +89,7 @@ let domUpdates = {
       room.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
       availableRoomsSection.innerHTML +=
       `
-      <article class="booking-card">
+      <article class="room-card" id="${room.number}">
         <h4>${room.dateAvailable}</h4>
         <h5>${room.roomType}</h5>
         <p>Room Number ${room.number}</p>
@@ -100,6 +100,26 @@ let domUpdates = {
       </article>
       `
     })
+  },
+
+  displayRoomView(availableRoomsSection, selectedRoom) {
+    availableRoomsSection.innerHTML = '';
+    let header = document.querySelector('#roomSearchHeader h2');
+    header.innerText = 'Book This Room';
+    let bidetMessage;
+    selectedRoom.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
+    availableRoomsSection.innerHTML =
+    `
+      <article class="big-room-card" id="${selectedRoom.number}">
+        <h4>${selectedRoom.dateAvailable}</h4>
+        <h5>${selectedRoom.roomType}</h5>
+        <p>Room Number ${selectedRoom.number}</p>
+        <p>Beds: ${selectedRoom.numBeds} ${selectedRoom.bedSize}<p>
+        <p>$${selectedRoom.costPerNight}/ night</p>
+        <p>Bidet included?</p>
+        <p>${bidetMessage}</p>
+      </article>
+    `
   },
 
   show(element) {
