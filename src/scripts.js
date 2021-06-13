@@ -34,6 +34,7 @@ const loginButton = document.getElementById('loginButton');
 const userNameInput = document.getElementById('userNameInput');
 const passwordInput = document.getElementById('passwordInput');
 const loginView = document.getElementById('loginView');
+const errorMessageContainer = document.getElementById('errorMessageContainer');
 
 // window.onload = instantiateData();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
@@ -48,6 +49,8 @@ function validateLogin() {
   event.preventDefault();
   let userName = userNameInput.value;
   let password = passwordInput.value;
+  passwordInput.value = '';
+  userNameInput.value = '';
   if (userName.includes('customer')) {
     fetchCustomer(userName.split('r')[1])
     .then(data => {
@@ -55,7 +58,13 @@ function validateLogin() {
       validatePassword(customer, password);
     })
     .catch(error => {
-      console.log(error);
+      console.log('error')
+      let message = `Error please try logging in again!`
+      domUpdates.displayMessage(errorMessageContainer, message)
+      domUpdates.show(errorMessageContainer);
+      const timeout = setTimeout(() => {
+        domUpdates.hide(errorMessageContainer);
+      }, 4000)
     })
   }
 }
@@ -94,7 +103,12 @@ function instantiateCustomerLogin(customer) {
       populateDashboard(currentCustomer, currentDate, totalSpent);
     })
     .catch((error) => {
-      console.log(error)
+      let message = `Error please try logging in again!`
+      domUpdates.displayMessage(errorMessageContainer, message)
+      domUpdates.show(errorMessageContainer);
+      const timeout = setTimeout(() => {
+        domUpdates.hide(errorMessageContainer);
+      }, 4000)
     })
 }
 
@@ -110,7 +124,12 @@ function instantiateData() {
       populateDashboard(currentCustomer, currentDate, totalSpent);
     })
     .catch((error) => {
-      console.log(error)
+      let message = `Error please try logging in again!`
+      domUpdates.displayMessage(errorMessageContainer, message)
+      domUpdates.show(errorMessageContainer);
+      const timeout = setTimeout(() => {
+        domUpdates.hide(errorMessageContainer);
+      }, 4000)
     })
 }
 
@@ -119,18 +138,26 @@ function postNewBooking() {
   postApiData(data)
   .then(response => {
     if (!response.ok) {
-      throw new Error(response.statusMessage)
+      throw new Error()
     } else {
       return response.json();
     }
   })
   .then(data => {
+    let message = "Congratulations, a new booking was added!"
+    domUpdates.displayMessage(availableRoomsSection, message)
     domUpdates.hide(submitBookingButton)
-    displayHomeView();
-    console.log(data);
+    const timeout = setTimeout(() => {
+      displayHomeView();
+    }, 4000)
   })
   .catch(error => {
-    console.log(error);
+    let message = `Sorry, something went wrong on our end! Try Again!`
+    domUpdates.displayMessage(availableRoomsSection, message)
+    domUpdates.hide(submitBookingButton)
+    const timeout = setTimeout(() => {
+      renderNewBookingsView();
+    }, 4000)
   })
 }
 
@@ -138,6 +165,7 @@ function displayHomeView() {
   instantiateCustomerLogin(currentCustomer);
   domUpdates.hide(availableRoomView)
   domUpdates.show(dashboard);
+  domUpdates.show(addNewBookingsButton);
 }
 
 function formatPost() {
@@ -164,8 +192,16 @@ function showAvailableRooms() {
   domUpdates.show(availableRoomView);
   domUpdates.show(filterTagsSection);
   availableRooms = hotel.getAvailableRooms(searchDate);
-  domUpdates.renderAvailableRooms(availableRoomsSection, availableRooms, searchDate);
-  domUpdates.renderAvailableTags(filterTagsContainer, availableRooms)
+  if (availableRooms.length) {
+    domUpdates.renderAvailableRooms(availableRoomsSection, availableRooms, searchDate);
+    domUpdates.renderAvailableTags(filterTagsContainer, availableRooms)
+  } else {
+    let message = 'Sorry, there were no available rooms for that day'
+    domUpdates.displayMessage(availableRoomsSection, message)
+    const timeout = setTimeout(() => {
+      renderNewBookingsView();
+    }, 4000)
+  }
 }
 
 function showFilteredRooms() {

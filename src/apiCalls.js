@@ -2,7 +2,7 @@ export const fetchApiData = (type) => {
   return fetch(`http://localhost:3001/api/v1/${type}`)
     .then(response => {
       if (!response.ok) {
-        throw new Error(response.statusMessage);
+        throw new Error(response.statusText);
       } else {
         return response.json();
       }
@@ -13,7 +13,7 @@ export const fetchCustomer = (id) => {
   return fetch(`http://localhost:3001/api/v1/customers/${id}`)
     .then(response => {
       if (!response.ok) {
-        throw new Error(response.statusMessage);
+        throw new Error(response.statusText);
       } else {
         return response.json();
       }
