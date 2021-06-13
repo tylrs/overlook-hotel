@@ -73,20 +73,20 @@ function instantiateData() {
 function postNewBooking() {
   let data = formatPost();
   console.log(data)
-  // postApiData(data)
-  // .then(response => {
-  //   if (!response.ok) {
-  //     throw new Error(response.statusMessage)
-  //   } else {
-  //     return response.json();
-  //   }
-  // })
-  // .then(data => {
-  //   console.log(data);
-  // })
-  // .catch(error => {
-  //   console.log(error);
-  // })
+  postApiData(data)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(response.statusMessage)
+    } else {
+      return response.json();
+    }
+  })
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.log(error);
+  })
 }
 
 function formatPost() {
