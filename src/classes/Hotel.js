@@ -14,6 +14,10 @@ class Hotel {
     })
   }
 
+  addCustomer(customer) {
+    this.customers.push(customer);
+  }
+
   updateCustomersDetailedBookings() {
     let detailedBookings = this.getDetailedBookings();
     this.customers.forEach(customer => {
