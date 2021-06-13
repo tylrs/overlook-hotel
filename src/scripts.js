@@ -27,11 +27,13 @@ const availableRoomsSection = document.getElementById('availableRoomsSection');
 const filterTagsSection = document.getElementById('filterTagsSection');
 const filterTagsContainer = document.getElementById('filterTagsContainer');
 const filterRoomTypeButton = document.getElementById('filterRoomTypeButton');
+const goBackCalendarButton = document.getElementById('goBackCalendarButton');
 
 window.onload = instantiateData();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
 searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
+goBackCalendarButton.addEventListener('click', renderNewBookingsView);
 
 function instantiateData() {
   currentDate = '2020/02/03';
