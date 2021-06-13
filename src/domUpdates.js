@@ -40,6 +40,7 @@ let domUpdates = {
   renderAvailableRooms(availableRoomsSection, availableRooms, searchDate) {
     availableRoomsSection.innerHTML = '';
     let bidetMessage;
+    console.log(availableRooms);
     availableRooms.forEach(room => {
       room.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
       availableRoomsSection.innerHTML +=
@@ -57,25 +58,51 @@ let domUpdates = {
     })
   },
 
-  renderAvailableTags(container, availableRooms) {
-    container.innerHTML = '';
+  renderAvailableTags(availableRoomsSection, availableRooms) {
+    availableRoomsSection.innerHTML = '';
     let tags = availableRooms.map(room => {
       return room.roomType;
     })
     let uniqueTags = [...new Set(tags)];
     uniqueTags.forEach(tag => {
-      container.innerHTML +=
+      availableRoomsSection.innerHTML +=
       `
       <li class="">
-				<input type="checkbox" name="tags" id="${tag}" value="${tag}" />
+				<input type="radio" name="tags" id="${tag}" value="${tag}" />
 				<label for="${tag}" class="tags">${tag}</label>
       </li>
       `
     })
   },
 
-  renderFilteredRooms() {
-
+  renderFilteredRooms(availableRoomsSection, availableRooms, tagRadioButtons, hotel) {
+    availableRoomsSection.innerHTML = ''
+    console.log(tagRadioButtons);;
+    let selectedType;
+    tagRadioButtons.forEach(tag => {
+      tag.checked ? selectedType = tag.value : null;
+      tag.checked = false;
+    })
+    console.log(selectedType);
+    console.log(availableRooms);
+    let filteredByType = hotel.filterRoomByType(availableRooms, selectedType);
+    let bidetMessage;
+    console.log(filteredByType)
+    filteredByType.forEach(room => {
+      room.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
+      availableRoomsSection.innerHTML +=
+      `
+      <article class="booking-card">
+        <h4>${room.dateAvailable}</h4>
+        <h5>${room.roomType}</h5>
+        <p>Room Number ${room.number}</p>
+        <p>Beds: ${room.numBeds} ${room.bedSize}<p>
+        <p>$${room.costPerNight}/ night</p>
+        <p>Bidet included?</p>
+        <p>${bidetMessage}</p>
+      </article>
+      `
+    })
   },
 
   show(element) {

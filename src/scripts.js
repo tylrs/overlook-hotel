@@ -49,15 +49,16 @@ function showAvailableRooms() {
   domUpdates.show(availableRoomView);
   domUpdates.show(filterTagsSection);
   availableRooms = hotel.getAvailableRooms(searchDate);
+  console.log(availableRooms)
   domUpdates.renderAvailableRooms(availableRoomsSection, availableRooms, searchDate);
   domUpdates.renderAvailableTags(filterTagsContainer, availableRooms)
 }
 
 function showFilteredRooms() {
   event.preventDefault();
-  let tagCheckBoxes = document.querySelectorAll('input[type="checkbox"]');
-  console.log(tagCheckBoxes)
-
+  let tagRadioButtons = document.querySelectorAll('input[type="radio"]');
+  console.log(tagRadioButtons)
+  domUpdates.renderFilteredRooms(availableRoomsSection, availableRooms, tagRadioButtons, hotel);
 }
 
 function populateDashboard(currentCustomer, currentDate, totalSpent) {
