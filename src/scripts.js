@@ -72,7 +72,6 @@ function instantiateData() {
 
 function postNewBooking() {
   let data = formatPost();
-  console.log(data)
   postApiData(data)
   .then(response => {
     if (!response.ok) {
@@ -82,6 +81,8 @@ function postNewBooking() {
     }
   })
   .then(data => {
+    domUpdates.hide(submitBookingButton)
+    displayHomeView();
     console.log(data);
   })
   .catch(error => {
@@ -89,9 +90,13 @@ function postNewBooking() {
   })
 }
 
+function displayHomeView() {
+  instantiateData();
+  domUpdates.hide(availableRoomView)
+  domUpdates.show(dashboard);
+}
+
 function formatPost() {
-  console.log(selectedRoom)
-  console.log(currentCustomer)
   let submitData = {
     userID: currentCustomer.id,
     date: selectedRoom.dateAvailable,
