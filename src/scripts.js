@@ -49,7 +49,7 @@ function instantiateData() {
       hotel.instantiateCustomers(promise[0]['customers'])
       hotel.instantiateCustomers(customerData);
       hotel.updateCustomersDetailedBookings();
-      let currentCustomer = hotel.customers[0];
+      let currentCustomer = hotel.customers[1];
       populateDashboard(currentCustomer, currentDate, totalSpent);
     })
     .catch((error) => {
@@ -84,8 +84,8 @@ function showFilteredRooms() {
 }
 
 function populateDashboard(currentCustomer, currentDate, totalSpent) {
-  domUpdates.renderBookingsCards(futureBookingsSection, currentCustomer, currentDate, 'past')
-  domUpdates.renderBookingsCards(pastBookingsSection, currentCustomer, currentDate, 'future/present')
+  domUpdates.renderBookingsCards(futureBookingsSection, currentCustomer, currentDate, 'future/present')
+  domUpdates.renderBookingsCards(pastBookingsSection, currentCustomer, currentDate, 'past')
   domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
 }
 
