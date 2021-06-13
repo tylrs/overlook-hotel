@@ -44,11 +44,14 @@ class Hotel {
     })
     return this.rooms.filter(room => {
       return !filteredBookings.includes(room.number)
+    }).map(room => {
+      room['dateAvailable'] = date;
+      return room;
     })
   }
 
-  filterRoomByType(date, type) {
-    return this.getAvailableRooms(date).filter(room => {
+  filterRoomByType(availableRooms, type) {
+    return availableRooms.filter(room => {
       return room.roomType === type;
     })
   }
