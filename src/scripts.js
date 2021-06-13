@@ -4,7 +4,7 @@
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 import domUpdates from './domUpdates.js'
-import {fetchApiData} from './apiCalls.js'
+import {fetchApiData, postApiData} from './apiCalls.js'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -44,7 +44,6 @@ function instantiateData() {
   currentDate = '2020/02/03';
   fetchAllData()
     .then(promise => {
-      console.log(promise[0]['customers'])
       hotel = new Hotel(promise[1]['bookings'], promise[2]['rooms'])
       hotel.instantiateCustomers(promise[0]['customers'])
       hotel.instantiateCustomers(customerData);
@@ -55,6 +54,10 @@ function instantiateData() {
     .catch((error) => {
       console.log(error)
     })
+}
+
+function postNewBooking() {
+  postApiData(data)
 }
 
 function determineViewToGoBackTo(event) {
