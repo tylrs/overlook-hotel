@@ -30,6 +30,9 @@ const filterTagsContainer = document.getElementById('filterTagsContainer');
 const filterRoomTypeButton = document.getElementById('filterRoomTypeButton');
 const goBackCalendarButton = document.getElementById('goBackButton');
 const submitBookingButton = document.getElementById('submitBookingButton');
+const loginButton = document.getElementById('loginButton');
+const userNameInput = document.getElementById('userNameInput');
+const passwordInput = document.getElementById('passwordInput')
 
 window.onload = instantiateData();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
@@ -38,6 +41,16 @@ filterRoomTypeButton.addEventListener('click', showFilteredRooms);
 goBackButton.addEventListener('click', determineViewToGoBackTo);
 availableRoomsSection.addEventListener('click', displayClickedRoom);
 submitBookingButton.addEventListener('click', postNewBooking)
+loginButton.addEventListener('click', validateLogin);
+
+function validateLogin() {
+  event.preventDefault();
+  let userName = userNameInput.value;
+  let password = passwordInput.value;
+  if (userName.includes('customer')) {
+    fetchCustomer()
+  }
+}
 
 function fetchAllData() {
   return Promise.all([fetchApiData('customers'), fetchApiData('bookings'), fetchApiData('rooms')]);
