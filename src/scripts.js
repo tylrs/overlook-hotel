@@ -34,6 +34,7 @@ const loginButton = document.getElementById('loginButton');
 const userNameInput = document.getElementById('userNameInput');
 const passwordInput = document.getElementById('passwordInput');
 const loginView = document.getElementById('loginView');
+const errorMessageContainer = document.getElementById('errorMessageContainer');
 
 // window.onload = instantiateData();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
@@ -48,6 +49,8 @@ function validateLogin() {
   event.preventDefault();
   let userName = userNameInput.value;
   let password = passwordInput.value;
+  passwordInput.value = '';
+  userNameInput.value = '';
   if (userName.includes('customer')) {
     fetchCustomer(userName.split('r')[1])
     .then(data => {
@@ -55,7 +58,13 @@ function validateLogin() {
       validatePassword(customer, password);
     })
     .catch(error => {
-      console.log(error);
+      console.log('error')
+      let message = `Error please try logging in again!`
+      domUpdates.displayMessage(errorMessageContainer, message)
+      domUpdates.show(errorMessageContainer);
+      const timeout = setTimeout(() => {
+        domUpdates.hide(errorMessageContainer);
+      }, 4000)
     })
   }
 }
@@ -94,7 +103,12 @@ function instantiateCustomerLogin(customer) {
       populateDashboard(currentCustomer, currentDate, totalSpent);
     })
     .catch((error) => {
-      console.log(error)
+      let message = `Error please try logging in again!`
+      domUpdates.displayMessage(errorMessageContainer, message)
+      domUpdates.show(errorMessageContainer);
+      const timeout = setTimeout(() => {
+        domUpdates.hide(errorMessageContainer);
+      }, 4000)
     })
 }
 
