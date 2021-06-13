@@ -119,7 +119,7 @@ function postNewBooking() {
   postApiData(data)
   .then(response => {
     if (!response.ok) {
-      throw new Error(response.statusMessage)
+      throw new Error()
     } else {
       return response.json();
     }
@@ -133,7 +133,12 @@ function postNewBooking() {
     }, 4000)
   })
   .catch(error => {
-    console.log(error);
+    let message = `Sorry, something went wrong on our end! Try Again!`
+    domUpdates.displayMessage(availableRoomsSection, message)
+    domUpdates.hide(submitBookingButton)
+    const timeout = setTimeout(() => {
+      renderNewBookingsView();
+    }, 4000)
   })
 }
 
@@ -173,7 +178,7 @@ function showAvailableRooms() {
     domUpdates.renderAvailableTags(filterTagsContainer, availableRooms)
   } else {
     let message = 'Sorry, there were no available rooms for that day'
-    domUpdates.displayErrorMessage(availableRoomsSection, message)
+    domUpdates.displayMessage(availableRoomsSection, message)
     const timeout = setTimeout(() => {
       renderNewBookingsView();
     }, 4000)
