@@ -104,6 +104,8 @@ let domUpdates = {
 
   displayRoomView(availableRoomsSection, selectedRoom) {
     availableRoomsSection.innerHTML = '';
+    let header = document.querySelector('#roomSearchHeader h2');
+    header.innerText = 'Book This Room';
     let bidetMessage;
     selectedRoom.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
     availableRoomsSection.innerHTML =
