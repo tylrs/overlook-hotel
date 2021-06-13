@@ -124,7 +124,12 @@ function instantiateData() {
       populateDashboard(currentCustomer, currentDate, totalSpent);
     })
     .catch((error) => {
-      console.log(error)
+      let message = `Error please try logging in again!`
+      domUpdates.displayMessage(errorMessageContainer, message)
+      domUpdates.show(errorMessageContainer);
+      const timeout = setTimeout(() => {
+        domUpdates.hide(errorMessageContainer);
+      }, 4000)
     })
 }
 
