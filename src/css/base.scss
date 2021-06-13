@@ -17,12 +17,16 @@ main {
 }
 
 header {
-  background-color: lightgreen;
+  background-color: $primary-accentcolor;
   display: flex;
   justify-content: space-between;
   padding-left: 2%;
   padding-right: 2%;
   align-items: center;
+}
+
+h1 {
+  color: $light-fontcolor;
 }
 
 .add-new-bookings-button {
@@ -102,17 +106,25 @@ header {
 }
 
 .login-view {
-  height: 100%;
-  width: 100%;
-}
-
-.login-container {
+  background-color: $primary-neutralcolor;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 100%;
+  // width: 100%;
+}
+
+.login-container {
+  background-color: $primary-accentcolor;
+  color: $light-fontcolor;
+  display: flex;
+  flex-direction: column;
+  grid-row-gap: 4%;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  height: 44vh;
+  width: 49vw;
 }
 
 .hide {
