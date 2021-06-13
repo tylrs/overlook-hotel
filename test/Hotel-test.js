@@ -24,6 +24,12 @@ describe('Hotel Class', function() {
     expect(hotel.rooms).to.deep.equal(roomsData);
   });
 
+  it('should be able to add a single customer', function() {
+    hotel.addCustomer(customer);
+
+    expect(hotel.customers.length).to.equal(1);
+  });
+
   it('should hold an array of all customers', function() {
     hotel.instantiateCustomers(customerData);
 

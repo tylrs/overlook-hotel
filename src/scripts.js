@@ -4,7 +4,7 @@
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 import domUpdates from './domUpdates.js'
-import {fetchApiData, postApiData} from './apiCalls.js'
+import {fetchApiData, postApiData, fetchCustomer} from './apiCalls.js'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -30,14 +30,41 @@ const filterTagsContainer = document.getElementById('filterTagsContainer');
 const filterRoomTypeButton = document.getElementById('filterRoomTypeButton');
 const goBackCalendarButton = document.getElementById('goBackButton');
 const submitBookingButton = document.getElementById('submitBookingButton');
+const loginButton = document.getElementById('loginButton');
+const userNameInput = document.getElementById('userNameInput');
+const passwordInput = document.getElementById('passwordInput');
+const loginView = document.getElementById('loginView');
 
-window.onload = instantiateData();
+// window.onload = instantiateData();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
 searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
 goBackButton.addEventListener('click', determineViewToGoBackTo);
 availableRoomsSection.addEventListener('click', displayClickedRoom);
 submitBookingButton.addEventListener('click', postNewBooking)
+loginButton.addEventListener('click', validateLogin);
+
+function validateLogin() {
+  event.preventDefault();
+  let userName = userNameInput.value;
+  let password = passwordInput.value;
+  if (userName.includes('customer')) {
+    fetchCustomer(userName.split('r')[1])
+    .then(data => {
+      let customer = new Customer(data)
+      validatePassword(customer, password);
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
+}
+
+function validatePassword(customer, password) {
+  if (customer.password === password) {
+    instantiateCustomerLogin(customer);
+  }
+}
 
 function fetchAllData() {
   return Promise.all([fetchApiData('customers'), fetchApiData('bookings'), fetchApiData('rooms')]);
@@ -54,13 +81,30 @@ function displayClickedRoom(event) {
   }
 }
 
+function instantiateCustomerLogin(customer) {
+  currentDate = '2020/02/03';
+  fetchAllData()
+    .then(promise => {
+      hotel = new Hotel(promise[1]['bookings'], promise[2]['rooms'])
+      // hotel.instantiateCustomers(promise[0]['customers'])
+      // hotel.instantiateCustomers(customerData);
+      hotel.addCustomer(customer);
+      hotel.updateCustomersDetailedBookings();
+      currentCustomer = hotel.customers[0];
+      populateDashboard(currentCustomer, currentDate, totalSpent);
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
 function instantiateData() {
   currentDate = '2020/02/03';
   fetchAllData()
     .then(promise => {
       hotel = new Hotel(promise[1]['bookings'], promise[2]['rooms'])
       hotel.instantiateCustomers(promise[0]['customers'])
-      hotel.instantiateCustomers(customerData);
+      // hotel.instantiateCustomers(customerData);
       hotel.updateCustomersDetailedBookings();
       currentCustomer = hotel.customers[1];
       populateDashboard(currentCustomer, currentDate, totalSpent);
@@ -91,7 +135,7 @@ function postNewBooking() {
 }
 
 function displayHomeView() {
-  instantiateData();
+  instantiateCustomerLogin(currentCustomer);
   domUpdates.hide(availableRoomView)
   domUpdates.show(dashboard);
 }
@@ -135,6 +179,8 @@ function populateDashboard(currentCustomer, currentDate, totalSpent) {
   domUpdates.renderBookingsCards(futureBookingsSection, currentCustomer, currentDate, 'future/present')
   domUpdates.renderBookingsCards(pastBookingsSection, currentCustomer, currentDate, 'past')
   domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
+  domUpdates.show(dashboard);
+  domUpdates.hide(loginView);
 }
 
 function renderNewBookingsView() {
