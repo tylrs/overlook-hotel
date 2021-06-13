@@ -119,7 +119,6 @@ let domUpdates = {
         <p>Bidet included?</p>
         <p>${bidetMessage}</p>
       </article>
-      <button id='submitBooking'>Book this room now!</button>
     `
   },
 
