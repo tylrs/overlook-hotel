@@ -2,6 +2,7 @@
 $primary-background: white;
 @import '_reset.scss';
 @import 'flatpickr/dist/flatpickr.css';
+@import '_variables.scss';
 
 body {
   background: $primary-background;
