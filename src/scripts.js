@@ -217,6 +217,7 @@ function populateDashboard(currentCustomer, currentDate, totalSpent) {
   domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
   domUpdates.show(dashboard);
   domUpdates.hide(loginView);
+  domUpdates.show(addNewBookingsButton);
 }
 
 function renderNewBookingsView() {
