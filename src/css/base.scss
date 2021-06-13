@@ -5,6 +5,7 @@ $primary-background: white;
 @import '_variables.scss';
 @import '_text.scss';
 @import '_buttons.scss';
+@import '_cards.scss';
 
 body {
   background: $primary-background;
@@ -64,17 +65,17 @@ h1 {
 }
 
 .future-bookings {
-  background-color: lightyellow;
+  background-color: $primary-neutralcolor;
   grid-area: future;
 }
 
 .past-bookings {
-  background-color: lightblue;
+  background-color: $primary-neutralcolor;
   grid-area: past;
 }
 
 .total-spent {
-  background-color: $secondary-neutralcolor;
+  background-color: $tertiary-accentcolor;
   display: flex;
   flex-direction: column;
   justify-content: center;
