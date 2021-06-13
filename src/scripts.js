@@ -4,6 +4,7 @@
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 import domUpdates from './domUpdates.js'
+import {fetchApiData} from './apiCalls.js'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -37,6 +38,7 @@ goBackButton.addEventListener('click', determineViewToGoBackTo);
 
 function instantiateData() {
   currentDate = '2020/02/03';
+  
   hotel = new Hotel(bookingsData, roomsData);
   hotel.instantiateCustomers(customerData);
   hotel.updateCustomersDetailedBookings();
