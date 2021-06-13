@@ -32,9 +32,10 @@ const goBackCalendarButton = document.getElementById('goBackButton');
 const submitBookingButton = document.getElementById('submitBookingButton');
 const loginButton = document.getElementById('loginButton');
 const userNameInput = document.getElementById('userNameInput');
-const passwordInput = document.getElementById('passwordInput')
+const passwordInput = document.getElementById('passwordInput');
+const loginView = document.getElementById('loginView');
 
-window.onload = instantiateData();
+// window.onload = instantiateData();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
 searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
@@ -80,15 +81,16 @@ function displayClickedRoom(event) {
   }
 }
 
-function instantiateCustomerLogin() {
+function instantiateCustomerLogin(customer) {
   currentDate = '2020/02/03';
   fetchAllData()
     .then(promise => {
       hotel = new Hotel(promise[1]['bookings'], promise[2]['rooms'])
       // hotel.instantiateCustomers(promise[0]['customers'])
       // hotel.instantiateCustomers(customerData);
+      hotel.addCustomer(customer);
       hotel.updateCustomersDetailedBookings();
-      currentCustomer = hotel.customers[1];
+      currentCustomer = hotel.customers[0];
       populateDashboard(currentCustomer, currentDate, totalSpent);
     })
     .catch((error) => {
@@ -133,7 +135,7 @@ function postNewBooking() {
 }
 
 function displayHomeView() {
-  instantiateData();
+  instantiateCustomerLogin(currentCustomer);
   domUpdates.hide(availableRoomView)
   domUpdates.show(dashboard);
 }
@@ -177,6 +179,8 @@ function populateDashboard(currentCustomer, currentDate, totalSpent) {
   domUpdates.renderBookingsCards(futureBookingsSection, currentCustomer, currentDate, 'future/present')
   domUpdates.renderBookingsCards(pastBookingsSection, currentCustomer, currentDate, 'past')
   domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
+  domUpdates.show(dashboard);
+  domUpdates.hide(loginView);
 }
 
 function renderNewBookingsView() {
