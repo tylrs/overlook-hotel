@@ -38,11 +38,11 @@ h1 {
 .dashboard {
   height: 100%;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas:
-    "future future future totalSpent"
-    "past past past totalSpent"
+    "future future future future future totalSpent"
+    "past past past past past totalSpent"
 }
 
 .booking-cards-section {
@@ -74,7 +74,7 @@ h1 {
 }
 
 .total-spent {
-  background-color: lightpink;
+  background-color: $secondary-neutralcolor;
   display: flex;
   flex-direction: column;
   justify-content: center;
