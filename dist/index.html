@@ -9,10 +9,10 @@
 <body>
   <header>
     <h1>The Overlook Hotel</h1>
-    <button type="button" name="button" class="add-new-bookings-button" id="addNewBookingsButtons">Add New Booking</button>
+    <button type="button" name="button" class="add-new-bookings-button" id="addNewBookingsButton">Add New Booking</button>
   </header>
   <main>
-    <section class="dashboard">
+    <section class="dashboard" id="dashboard">
       <section class="future-bookings">
         <h2>Upcoming Bookings</h2>
         <section class="booking-cards-section" id="futureBookings">
@@ -34,6 +34,28 @@
         <h3>Total Spent on Bookings:</h3>
         <p id="totalSpent">$600,000</p>
       </aside>
+    </section>
+    <section class="calendar-view hide"id="calendarView">
+      <label for="calendarInput">Choose a Date to Search</label>
+      <button id="searchCalendar">Search for Available Rooms</button>
+      <input type="text" placeholder="Select Date" class="calendar-input" id="calendarInput" data-input>
+    </section>
+    <section class="available-room-view hide" id="availableRoomView">
+      <div id="roomSearchHeader">
+        <button id="goBackButton">BACK</button>
+        <h2>Available Rooms</h2>
+      </div>
+      <section class="available-cards-section" id="availableRoomsSection">
+
+      </section>
+      <section class="filter-tags-section hide" id="filterTagsSection">
+        <form class="filter-room-type-form" action="index.html">
+          <fieldset class="filter-tags-container" id="filterTagsContainer">
+
+          </fieldset>
+          <button id="filterRoomTypeButton">Filter By Room Type</button>
+        </form>
+      </section>
     </section>
   </main>
   <script src="bundle.js"></script>

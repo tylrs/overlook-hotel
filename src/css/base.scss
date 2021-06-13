@@ -1,6 +1,7 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 $primary-background: white;
 @import '_reset.scss';
+@import 'flatpickr/dist/flatpickr.css';
 
 body {
   background: $primary-background;
@@ -69,4 +70,33 @@ header {
   justify-content: center;
   grid-area: totalSpent;
   text-align: center;
+}
+
+.calendar-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  // width: 100%;
+}
+
+.searchCalendar {
+
+}
+
+.available-room-view {
+  height: 100%;
+}
+
+.available-cards-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.hide {
+  display: none;
 }
