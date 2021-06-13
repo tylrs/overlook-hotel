@@ -42,6 +42,8 @@ header {
   height: 95%;
   display: flex;
   justify-content: space-around;
+  overflow-x: scroll;
+  grid-column-gap: 2rem;
 }
 
 .booking-card {
