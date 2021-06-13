@@ -13,13 +13,14 @@
   </header>
   <main>
     <section class="login-view" id="loginView">
-      <article class="login-container" id="loginContainer">
+      <form class="login-container" id="loginContainer">
         <h2>Login To Your Account</h2>
         <label for="userName">UserName</label>
-        <input type="text" name="" value="" id="userName">
+        <input type="text" name="" value="" id="userName" required>
         <label for="password">Password</label>
-        <input type="text" name="" value="" id="password">
-      </article>
+        <input type="text" name="" value="" id="password" required>
+        <button type="button" name="button" id="loginButton">Login</button>
+      </form>
     </section>
     <section class="dashboard hide" id="dashboard">
       <section class="future-bookings">
