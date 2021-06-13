@@ -4,7 +4,7 @@
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 import domUpdates from './domUpdates.js'
-import {fetchApiData, postApiData} from './apiCalls.js'
+import {fetchApiData, postApiData, fetchCustomer} from './apiCalls.js'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -48,7 +48,20 @@ function validateLogin() {
   let userName = userNameInput.value;
   let password = passwordInput.value;
   if (userName.includes('customer')) {
-    fetchCustomer()
+    fetchCustomer(userName.split('r')[1])
+    .then(data => {
+      let customer = new Customer(data)
+      validatePassword(customer, password);
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
+}
+
+function validatePassword(customer, password) {
+  if (customer.password === password) {
+    instantiateCustomerLogin(customer);
   }
 }
 
@@ -67,13 +80,29 @@ function displayClickedRoom(event) {
   }
 }
 
+function instantiateCustomerLogin() {
+  currentDate = '2020/02/03';
+  fetchAllData()
+    .then(promise => {
+      hotel = new Hotel(promise[1]['bookings'], promise[2]['rooms'])
+      // hotel.instantiateCustomers(promise[0]['customers'])
+      // hotel.instantiateCustomers(customerData);
+      hotel.updateCustomersDetailedBookings();
+      currentCustomer = hotel.customers[1];
+      populateDashboard(currentCustomer, currentDate, totalSpent);
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
 function instantiateData() {
   currentDate = '2020/02/03';
   fetchAllData()
     .then(promise => {
       hotel = new Hotel(promise[1]['bookings'], promise[2]['rooms'])
       hotel.instantiateCustomers(promise[0]['customers'])
-      hotel.instantiateCustomers(customerData);
+      // hotel.instantiateCustomers(customerData);
       hotel.updateCustomersDetailedBookings();
       currentCustomer = hotel.customers[1];
       populateDashboard(currentCustomer, currentDate, totalSpent);
