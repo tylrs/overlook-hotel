@@ -47,21 +47,12 @@ h1 {
 }
 
 .booking-cards-section {
-  height: 95%;
+  height: 71%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   overflow-x: scroll;
   grid-column-gap: 2rem;
-}
-
-.booking-card,
-.room-card {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  min-width: 25%;
 }
 
 .future-bookings {
