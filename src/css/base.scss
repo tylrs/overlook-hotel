@@ -69,6 +69,7 @@ h1 {
 
 .total-spent {
   background-color: $tertiary-accentcolor;
+  color: $light-fontcolor;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -105,6 +106,7 @@ h1 {
   flex-direction: row;
   // flex-wrap: wrap;
   justify-content: space-around;
+  overflow-x: scroll;
   gap: 2rem;
 }
 
@@ -145,7 +147,40 @@ h1 {
   background: white;
   border-radius: 5%;
   border: 4px solid transparent;
+  border-left-width: 6px;
   background-clip: content-box;
+}
+
+.filter-tags-container {
+  list-style-type: none;
+  text-transform: capitalize;
+}
+
+.filter-room-type-form {
+  // background-color: $secondary-accentcolor;
+}
+
+.filter-tag {
+   margin-bottom: 24%;
+   text-align: center;
+   // border-radius: 15px;
+   // padding: 0 0.5rem 0.1rem 0.5rem;
+   // font-size: 0.9rem;
+   // border: 1px solid black;
+   // text-align: center;
+   // color: bla;
+   // background-color: $tertiary-accentcolor;
+}
+
+.filter-tag-label {
+   margin-bottom: 24%;;
+   border-radius: 15px;
+   padding: 0 0.5rem 0.1rem 0.5rem;
+   font-size: 0.9rem;
+   border: 1px solid black;
+   text-align: center;
+   // color: bla;
+   // background-color: $tertiary-accentcolor;
 }
 
 .room-search-header {
@@ -153,6 +188,15 @@ h1 {
   grid-template-columns: .5fr 1fr;
   grid-template-areas:
   "button text";
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + .filter-tag-label {
+  background-color: $secondary-accentcolor;
+  // color: white;
 }
 
 .hide {
