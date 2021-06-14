@@ -36,7 +36,7 @@ const passwordInput = document.getElementById('passwordInput');
 const loginView = document.getElementById('loginView');
 const errorMessageContainer = document.getElementById('errorMessageContainer');
 
-// window.onload = instantiateData();
+window.onload = validateLogin();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
 searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
@@ -46,7 +46,7 @@ submitBookingButton.addEventListener('click', postNewBooking)
 loginButton.addEventListener('click', validateLogin);
 
 function validateLogin() {
-  event.preventDefault();
+  // event.preventDefault();
   let userName = userNameInput.value;
   let password = passwordInput.value;
   passwordInput.value = '';

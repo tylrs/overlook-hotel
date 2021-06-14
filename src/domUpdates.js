@@ -10,10 +10,13 @@ let domUpdates = {
       element.innerHTML +=
       `
         <article class="booking-card">
-          <h5>${booking.date}</h4>
+          <div class="card-header">
+            <h4>Your Booking On:</h4>
+            <h4>${booking.date}</h4>
+          </div>
           <p>${booking.roomType}</p>
           <p>Room Number ${booking.roomNumber}</p>
-          <p>Beds: ${booking.numBeds} ${booking.bedSize}<p>
+          <p>Beds: ${booking.numBeds} ${booking.bedSize}</p>
           <p>$${booking.costPerNight}/ night</p>
           <p>Bidet included?</p>
           <p>${bidetMessage}</p>
@@ -93,7 +96,7 @@ let domUpdates = {
         <h4>${room.dateAvailable}</h4>
         <h5>${room.roomType}</h5>
         <p>Room Number ${room.number}</p>
-        <p>Beds: ${room.numBeds} ${room.bedSize}<p>
+        <p>Beds: ${room.numBeds} ${room.bedSize}</p>
         <p>$${room.costPerNight}/ night</p>
         <p>Bidet included?</p>
         <p>${bidetMessage}</p>
@@ -114,7 +117,7 @@ let domUpdates = {
         <h4>${selectedRoom.dateAvailable}</h4>
         <h5>${selectedRoom.roomType}</h5>
         <p>Room Number ${selectedRoom.number}</p>
-        <p>Beds: ${selectedRoom.numBeds} ${selectedRoom.bedSize}<p>
+        <p>Beds: ${selectedRoom.numBeds} ${selectedRoom.bedSize}</p>
         <p>$${selectedRoom.costPerNight}/ night</p>
         <p>Bidet included?</p>
         <p>${bidetMessage}</p>
