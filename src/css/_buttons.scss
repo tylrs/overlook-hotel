@@ -1,8 +1,21 @@
 .medium-button {
   background-color: $secondary-accentcolor;
-  border-radius: 7%;
+  border-radius: 5px;
   color: $dark-fontcolor;
   font-size: 2vw;
   height: 3vw;
   width: 12vw;
+}
+
+.search-calendar-button {
+  padding: 1%;
+  background-color: $secondary-accentcolor;
+  border-radius: 4px;
+  margin-top: 3%;
+  border: 1px solid black;
+}
+
+.add-new-bookings-button {
+  border: solid white 2px;
+  font-size: 1.8vw;
 }
