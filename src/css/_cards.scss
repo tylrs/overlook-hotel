@@ -20,6 +20,7 @@
   height: 80%;
   width: 40%;
   min-width: 30%;
+  text-transform: capitalize;
 }
 
 .card-header {
@@ -35,4 +36,37 @@
   padding-top: 5px;
   color: black;
   font-weight: bold;
+  border-bottom: solid black 2px;
+}
+
+.card-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+  "details cost";
+  height: 100%;
+  width: 100%;
+}
+
+.booking-info {
+  grid-area: details;
+  border-right: solid black 2px;
+  text-align: center;
+}
+
+.costPerNight {
+  grid-area: cost;
+  font-weight: bold;
+}
+
+.booking-info,
+.costPerNight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.booking-info * {
+  margin-bottom: 3%;
 }

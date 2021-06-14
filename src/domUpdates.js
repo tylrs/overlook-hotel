@@ -6,7 +6,7 @@ let domUpdates = {
     let bookings = currentCustomer.returnBookings(type, currentDate)
     let bidetMessage;
     bookings.forEach(booking => {
-      booking.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
+      booking.bidet ? bidetMessage = 'Luxury Bidet' : bidetMessage = 'Sorry, no bidet'
       element.innerHTML +=
       `
         <article class="booking-card">
@@ -14,12 +14,17 @@ let domUpdates = {
             <h4>Your Booking On:</h4>
             <h4>${booking.date}</h4>
           </div>
-          <p>${booking.roomType}</p>
-          <p>Room Number ${booking.roomNumber}</p>
-          <p>Beds: ${booking.numBeds} ${booking.bedSize}</p>
-          <p>$${booking.costPerNight}/ night</p>
-          <p>Bidet included?</p>
-          <p>${bidetMessage}</p>
+          <div class="card-details">
+            <div class="booking-info">
+              <p>Room #${booking.roomNumber}</p>
+              <p>${booking.roomType}</p>
+              <p>Beds: ${booking.numBeds} ${booking.bedSize}</p>
+              <p>${bidetMessage}</p>
+            </div>
+            <div class="costPerNight">
+              <p>$${booking.costPerNight}/ night</p>
+            </div>
+          </div>
         </article>
       `
     })
@@ -44,18 +49,37 @@ let domUpdates = {
     header.innerText = 'Available Rooms';
     let bidetMessage;
     availableRooms.forEach(room => {
-      room.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
+      room.bidet ? bidetMessage = 'Luxury Bidet' : bidetMessage = 'No bidet for you'
       availableRoomsSection.innerHTML +=
+      // `
+      // <article class="room-card" id="${room.number}">
+      //   <h4>${searchDate}</h4>
+      //   <h5>${room.roomType}</h5>
+      //   <p>Room Number ${room.number}</p>
+      //   <p>Beds: ${room.numBeds} ${room.bedSize}<p>
+      //   <p>$${room.costPerNight}/ night</p>
+      //   <p>Bidet included?</p>
+      //   <p>${bidetMessage}</p>
+      // </article>
+      // `
       `
-      <article class="room-card" id="${room.number}">
-        <h4>${searchDate}</h4>
-        <h5>${room.roomType}</h5>
-        <p>Room Number ${room.number}</p>
-        <p>Beds: ${room.numBeds} ${room.bedSize}<p>
-        <p>$${room.costPerNight}/ night</p>
-        <p>Bidet included?</p>
-        <p>${bidetMessage}</p>
-      </article>
+        <article class="room-card" id="${room.number}">
+          <div class="card-header">
+            <h4>Date Available:</h4>
+            <h4>${searchDate}</h4>
+          </div>
+          <div class="card-details">
+            <div class="booking-info">
+              <p>Room #${room.number}</p>
+              <p>${room.roomType}</p>
+              <p>Beds: ${room.numBeds} ${room.bedSize}</p>
+              <p>${bidetMessage}</p>
+            </div>
+            <div class="costPerNight">
+              <p>$${room.costPerNight}/ night</p>
+            </div>
+          </div>
+        </article>
       `
     })
   },
