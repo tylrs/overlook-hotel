@@ -93,9 +93,9 @@ let domUpdates = {
     uniqueTags.forEach(tag => {
       availableRoomsSection.innerHTML +=
       `
-      <li class="">
+      <li class="filter-tag">
 				<input type="radio" name="tags" id="${tag}" value="${tag}" />
-				<label for="${tag}" class="tags">${tag}</label>
+				<label class="filter-tag-label" for="${tag}">${tag}</label>
       </li>
       `
     })
