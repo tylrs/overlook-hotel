@@ -1,4 +1,4 @@
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 686px) {
   .booking-card,
   .room-card {
     min-width: 60%;
@@ -14,5 +14,32 @@
 
   body .error-message {
     margin-left: 3rem;
+  }
+
+  .card-section-title {
+    font-size: 2.2rem;
+  }
+
+  .dashboard {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1.5fr;
+  }
+
+  .total-spent-title {
+    font-size: 1.6rem;
+  }
+
+}
+
+@media screen and (max-width: 410px) {
+  .dashboard {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr;
+  }
+
+  .card-section-title {
+    font-size: 1.6rem;
+  }
+
+  .total-spent-title {
+    font-size: 1.2rem;
   }
 }
