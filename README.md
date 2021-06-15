@@ -41,7 +41,7 @@ The project spec can be found [here](https://frontend.turing.edu/projects/overlo
 ![GIF showing users future and past bookings](./gifs/user-bookings.gif)
 
 ### GIF showing calendar and available cards
-![GIF showing calendar and available cards](./gifs/user-calendar.gif)
+![GIF showing calendar and available cards](./gifs/calendar.gif)
 
 ### GIF showing filter options
 ![GIF showing filter options ](./gifs/filter.gif)
@@ -70,3 +70,5 @@ This application was written by [Taylor Galloway](https://github.com/tylrs) Mod 
 ## Future Additions:
 
 * Add another user who is a manager who can perform different operations with the same data set.
+* Use more mixins to DRY up SCSS
+* Give manager option to delete a customer's bookings
