@@ -1,9 +1,17 @@
 //Colors
-$primary-neutralcolor: #f1e5bd;///tan
-$tertiary-accentcolor: #3B8FBF;//
+$primary-neutralcolor: #f1e5bd; //tan
+$tertiary-accentcolor: #3B8FBF; //
 $primary-accentcolor: #081C3B;
 $secondary-accentcolor: #A6D9F7;
 
 //Font colors
 $light-fontcolor: #ffffff;
 $dark-fontcolor: black;
+
+//Mixins
+@mixin flex-layout($justify, $align:"", $direction) {
+  display: flex;
+  align-items: unquote($align);
+  justify-content: $justify;
+  flex-direction: $direction;
+}

@@ -5,6 +5,10 @@
   font-size: 1.7rem;
   height: 2rem;
   width: 7rem;
+    &:hover {
+      background-color: #ccecff;
+      cursor: pointer;
+    }
 }
 
 .search-calendar-button {
@@ -13,14 +17,15 @@
   border-radius: 4px;
   margin-top: 3%;
   border: 1px solid black;
+    &:hover {
+      background-color: #ccecff;
+      cursor: pointer;
+    }
 }
 
 .add-new-bookings-button {
   border: solid white 2px;
   font-size: 1rem;
-  // height: 47%;
-  // // height: 10%;
-  // width: 14%;
 }
 
 .go-back-button {
@@ -28,17 +33,12 @@
   margin-left: 3%;
   border: black solid 1px;
   font-size: 1.5rem;
-  // height: 38%;
-  // width: 42%;
 }
 
 .filter-button {
   font-size: 1.6rem;
-  // height: 32%;
-  // width: 100%;
   border: solid black 1px;
   margin-bottom: 11%;
-  // background-color: $tertiary-accentcolor;
 }
 
 .submit-booking-button {

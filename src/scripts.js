@@ -18,6 +18,8 @@ let currentCustomer, hotel, currentDate, availableRooms, selectedRoom;
 const dashboard = document.getElementById('dashboard');
 const futureBookingsSection = document.getElementById('futureBookings');
 const pastBookingsSection = document.getElementById('pastBookings');
+const futureBookingsTitle = document.getElementById('futureBookingsTitle');
+const pastBookingsTitle = document.getElementById('pastBookingsTitle');
 const totalSpent = document.getElementById('totalSpent');
 const addNewBookingsButton = document.getElementById('addNewBookingsButton');
 const calendarView = document.getElementById('calendarView');
@@ -38,19 +40,18 @@ const loginView = document.getElementById('loginView');
 const errorMessageContainer = document.getElementById('errorMessageContainer');
 const submitBookingButtonSection = document.getElementById('submitBookingButtonSection');
 
-window.onload = validateLogin();
+// window.onload = validateLogin();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
 searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
 goBackButton.addEventListener('click', determineViewToGoBackTo);
 availableRoomsSection.addEventListener('click', displayClickedRoom);
-// not sure how to deal with this yet....
 availableRoomsSection.addEventListener('keydown', displayClickedRoom);
 submitBookingButton.addEventListener('click', postNewBooking)
 loginButton.addEventListener('click', validateLogin);
 
 function validateLogin() {
-  // event.preventDefault();
+  event.preventDefault();
   let userName = userNameInput.value;
   let password = passwordInput.value;
   passwordInput.value = '';
@@ -84,11 +85,6 @@ function fetchAllData() {
 }
 
 function displayClickedRoom(event) {
-  // event.preventDefault();
-  console.log(event)
-  if (event instanceof MouseEvent) {
-    console.log('hello')
-  }
   if ((event.target.closest('article') && event instanceof MouseEvent) || event.keyCode === 13) {
     selectedRoom = availableRooms.find(room => {
       return room.number === parseInt(event.target.closest('article').id);
@@ -212,12 +208,16 @@ function showAvailableRooms() {
   domUpdates.show(availableRoomView);
   domUpdates.show(filterTagsSection);
   domUpdates.show(goBackCalendarButton);
+  domUpdates.show(cardSectionTitle);
   availableRooms = hotel.getAvailableRooms(searchDate);
   if (availableRooms.length) {
     domUpdates.renderAvailableRooms(availableRoomsSection, availableRooms, searchDate);
     domUpdates.renderAvailableTags(filterTagsContainer, availableRooms)
   } else {
     let message = 'Sorry, there are no available rooms for that day'
+    availableRoomsSection.innerHTML = '';
+    let header = document.querySelector('#roomSearchHeader h2');
+    header.innerText = 'Available Rooms';
     domUpdates.displayMessage(availableRoomsSection, message)
     availableRoomsSection.classList.add('available-cards-centered');
     domUpdates.hide(filterTagsSection);
@@ -239,6 +239,8 @@ function populateDashboard(currentCustomer, currentDate, totalSpent) {
   domUpdates.renderBookingsCards(futureBookingsSection, currentCustomer, currentDate, 'future/present')
   domUpdates.renderBookingsCards(pastBookingsSection, currentCustomer, currentDate, 'past')
   domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
+  domUpdates.renderInnerText(futureBookingsTitle, `Upcoming Bookings for ${currentCustomer.name.split(' ')[0]}`)
+  domUpdates.renderInnerText(pastBookingsTitle, `Previous Bookings for ${currentCustomer.name.split(' ')[0]}`)
   domUpdates.show(dashboard);
   domUpdates.hide(loginView);
   availableRoomsSection.classList.remove('available-cards-centered');

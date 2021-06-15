@@ -1,0 +1,105 @@
+header {
+  background-color: $primary-accentcolor;
+  padding-left: 2%;
+  padding-right: 2%;
+  @include flex-layout(space-between, center, row);
+}
+
+.dashboard {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "future future future future future totalSpent"
+    "past past past past past totalSpent"
+}
+
+.booking-cards-section {
+  height: 83%;
+  overflow-x: scroll;
+  grid-column-gap: 2rem;
+  @include flex-layout(space-between, center, row);
+}
+
+.future-bookings {
+  background-color: white;
+  grid-area: future;
+}
+
+.past-bookings {
+  background-color: white;
+  grid-area: past;
+}
+
+.booking-cards-section {
+  padding-left: 2%;
+}
+
+.total-spent {
+  background-color: $tertiary-accentcolor;
+  color: $light-fontcolor;
+  @include flex-layout(center, "", column);
+  grid-area: totalSpent;
+  text-align: center;
+    * {
+      background-color: white;
+      background-color: #ffffff9e;
+      color: black;
+      padding: 6%;
+    }
+}
+
+.calendar-view {
+  @include flex-layout(center, center, column);
+  height: 100%;
+}
+
+.available-room-view {
+  height: 100%;
+  display: grid;
+  grid-template-rows: .25fr 1fr 1fr;
+  grid-template-areas:
+    "header"
+    "cards"
+    "filter"
+}
+
+.available-cards-section {
+  overflow-x: scroll;
+  gap: 2rem;
+  @include flex-layout(space-between, "", row);
+  padding-left: 2%;
+}
+
+.available-cards-centered {
+  justify-content: center;
+}
+
+.login-view {
+  background-color: white;
+  @include flex-layout(center, center, row);
+  height: 100%;
+}
+
+.login-container {
+  background-color: $primary-accentcolor;
+  color: $light-fontcolor;
+  grid-row-gap: 4%;
+  @include flex-layout(center, center, column);
+  border: 2px solid black;
+  height: 65vh;
+  width: 86vw;
+}
+
+.submit-booking-button-section {
+  @include flex-layout(center, center, column);
+}
+
+.room-search-header {
+  display: grid;
+  grid-template-columns: .5fr 1fr .5fr;
+  grid-template-areas:
+  "button text .";
+  text-align: center;
+}

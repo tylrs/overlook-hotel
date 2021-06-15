@@ -1,0 +1,43 @@
+.filter-room-type-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.filter-tags-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filter-tags-container {
+  list-style-type: none;
+  text-transform: capitalize;
+}
+
+.filter-tag {
+   margin-bottom: 7%;
+   text-align: center;
+}
+
+.filter-tag-label {
+   margin-bottom: 24%;
+   border-radius: 15px;
+   padding: 0 0.5rem 0.1rem 0.5rem;
+   font-size: 1rem;
+   border: 1px solid black;
+   text-align: center;
+   &:hover {
+     background-color: #ccecff;
+     cursor: pointer;
+   }
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + .filter-tag-label {
+  background-color: $secondary-accentcolor;
+}
