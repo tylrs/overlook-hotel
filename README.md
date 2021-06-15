@@ -6,13 +6,12 @@ The project spec can be found [here](https://frontend.turing.edu/projects/overlo
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Features](#Demonstration)
-- [Technologies](#Technologies)
-- [Setup](#Setup/execution-Instructions)
-- [Future Iterations](#Future)
-- [Original Assignment](#Original)
-- [Contributors](#Contributors)
+- [Install](#install)
+- [Goals](#goals)
+- [Features](#features)
+- [Contributors](#contributors)
+- [Technologies](#technologies)
+- [Future Iterations](#future)
 
 ## Install
 
@@ -34,20 +33,23 @@ The project spec can be found [here](https://frontend.turing.edu/projects/overlo
 
 ## Features
 
+### GIF showing user login
+![GIF showing user login](./gifs/user-login.gif)
+
 ### GIF showing users future and past bookings
-![GIF showing users future and past bookings]()
+![GIF showing users future and past bookings](./gifs/user-bookings.gif)
 
 ### GIF showing calendar and available cards
-![GIF showing calendar and available cards]()
+![GIF showing calendar and available cards](./gifs/calendar.gif)
 
 ### GIF showing filter options
-![GIF showing filter options ]()
+![GIF showing filter options ](./gifs/filter.gif)
 
 ### GIF showing add new booking
-![GIF showing add new booking]()
+![GIF showing add new booking](./gifs/add-booking.gif)
 
 ### GIF showing responsive app
-![GIF showing responsive app]()
+![GIF showing responsive app](./gifs/mobile-view.gif)
 
 ## Contributors
 
@@ -67,3 +69,5 @@ This application was written by [Taylor Galloway](https://github.com/tylrs) Mod 
 ## Future Additions:
 
 * Add another user who is a manager who can perform different operations with the same data set.
+* Use more mixins to DRY up SCSS
+* Give manager option to delete a customer's bookings
