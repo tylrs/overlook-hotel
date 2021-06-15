@@ -188,9 +188,10 @@ h1 {
 
 .room-search-header {
   display: grid;
-  grid-template-columns: .5fr 1fr;
+  grid-template-columns: .5fr 1fr .5fr;
   grid-template-areas:
-  "button text";
+  "button text .";
+  text-align: center;
 }
 
 input[type="radio"] {
