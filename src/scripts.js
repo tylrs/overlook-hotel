@@ -25,6 +25,7 @@ const calendarInput = document.getElementById('calendarInput');
 const searchCalendar = document.getElementById('searchCalendar');
 const availableRoomView = document.getElementById('availableRoomView');
 const availableRoomsSection = document.getElementById('availableRoomsSection');
+const cardSectionTitle = document.getElementById('cardSectionTitle');
 const filterTagsSection = document.getElementById('filterTagsSection');
 const filterTagsContainer = document.getElementById('filterTagsContainer');
 const filterRoomTypeButton = document.getElementById('filterRoomTypeButton');
@@ -83,7 +84,7 @@ function fetchAllData() {
 }
 
 function displayClickedRoom(event) {
-  event.preventDefault();
+  // event.preventDefault();
   console.log(event)
   if (event instanceof MouseEvent) {
     console.log('hello')
@@ -157,15 +158,18 @@ function postNewBooking() {
     domUpdates.displayMessage(availableRoomsSection, message);
     domUpdates.hide(submitBookingButton);
     domUpdates.hide(submitBookingButtonSection);
+    domUpdates.hide(goBackCalendarButton);
+    domUpdates.hide(cardSectionTitle);
     const timeout = setTimeout(() => {
       displayHomeView();
-    }, 3000000)
+    }, 3000)
   })
   .catch(error => {
     let message = `Sorry, something went wrong on our end! Try Again!`
     domUpdates.displayMessage(availableRoomsSection, message)
     domUpdates.hide(submitBookingButton);
     domUpdates.hide(submitBookingButtonSection);
+    domUpdates.hide(cardSectionTitle);
     // const timeout = setTimeout(() => {
     //   renderNewBookingsView();
     // }, 3000)
@@ -209,11 +213,13 @@ function showAvailableRooms() {
     domUpdates.renderAvailableRooms(availableRoomsSection, availableRooms, searchDate);
     domUpdates.renderAvailableTags(filterTagsContainer, availableRooms)
   } else {
-    let message = 'Sorry, there were no available rooms for that day'
+    let message = 'Sorry, there are no available rooms for that day'
     domUpdates.displayMessage(availableRoomsSection, message)
-    const timeout = setTimeout(() => {
-      renderNewBookingsView();
-    }, 3000000)
+    domUpdates.hide(filterTagsSection);
+    // domUpdates.hide(filterTagsSection);
+    // const timeout = setTimeout(() => {
+    //   renderNewBookingsView();
+    // }, 3000000)
   }
 }
 
