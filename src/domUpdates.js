@@ -86,6 +86,7 @@ let domUpdates = {
 
   renderAvailableTags(availableRoomsSection, availableRooms) {
     availableRoomsSection.innerHTML = '';
+    availableRoomsSection.innerHTML = `<legend class="filter-section-title">Filter Available Rooms by Room Type</legend>`
     let tags = availableRooms.map(room => {
       return room.roomType;
     })
