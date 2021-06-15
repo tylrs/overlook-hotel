@@ -133,9 +133,16 @@ h1 {
   width: 86vw;
 }
 
-.filter-tags-section,
+.filter-tags-section {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+}
+
 .submit-booking-button-section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -179,7 +186,7 @@ h1 {
    margin-bottom: 24%;;
    border-radius: 15px;
    padding: 0 0.5rem 0.1rem 0.5rem;
-   font-size: 0.9rem;
+   font-size: 1rem;
    border: 1px solid black;
    text-align: center;
    // color: bla;
