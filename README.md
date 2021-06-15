@@ -41,16 +41,16 @@ The project spec can be found [here](https://frontend.turing.edu/projects/overlo
 ![GIF showing users future and past bookings](./gifs/user-bookings.gif)
 
 ### GIF showing calendar and available cards
-![GIF showing calendar and available cards]()
+![GIF showing calendar and available cards](./gifs/user-calendar.gif)
 
 ### GIF showing filter options
-![GIF showing filter options ]()
+![GIF showing filter options ](./gifs/filter.gif)
 
 ### GIF showing add new booking
-![GIF showing add new booking]()
+![GIF showing add new booking](./gifs/add-booking.gif)
 
 ### GIF showing responsive app
-![GIF showing responsive app]()
+![GIF showing responsive app](./gifs/mobile-view.gif)
 
 ## Contributors
 
