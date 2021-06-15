@@ -43,6 +43,8 @@ searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
 goBackButton.addEventListener('click', determineViewToGoBackTo);
 availableRoomsSection.addEventListener('click', displayClickedRoom);
+// not sure how to deal with this yet....
+availableRoomsSection.addEventListener('keyup', displayClickedRoom);
 submitBookingButton.addEventListener('click', postNewBooking)
 loginButton.addEventListener('click', validateLogin);
 
