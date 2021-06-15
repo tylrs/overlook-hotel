@@ -154,7 +154,7 @@ function postNewBooking() {
     domUpdates.hide(submitBookingButtonSection);
     const timeout = setTimeout(() => {
       displayHomeView();
-    }, 3000)
+    }, 3000000)
   })
   .catch(error => {
     let message = `Sorry, something went wrong on our end! Try Again!`

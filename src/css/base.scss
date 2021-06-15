@@ -225,3 +225,9 @@ input[type="radio"]:checked + .filter-tag-label {
 .hide {
   display: none;
 }
+
+.error-message {
+  align-self: center;
+  margin-left: 7rem;
+  font-size: 2rem;
+}
