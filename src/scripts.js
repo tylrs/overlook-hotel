@@ -211,6 +211,7 @@ function showAvailableRooms() {
   domUpdates.hide(submitBookingButtonSection);
   domUpdates.show(availableRoomView);
   domUpdates.show(filterTagsSection);
+  domUpdates.show(goBackCalendarButton);
   availableRooms = hotel.getAvailableRooms(searchDate);
   if (availableRooms.length) {
     domUpdates.renderAvailableRooms(availableRoomsSection, availableRooms, searchDate);
