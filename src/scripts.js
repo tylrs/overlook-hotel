@@ -166,9 +166,9 @@ function postNewBooking() {
     domUpdates.displayMessage(availableRoomsSection, message)
     domUpdates.hide(submitBookingButton);
     domUpdates.hide(submitBookingButtonSection);
-    const timeout = setTimeout(() => {
-      renderNewBookingsView();
-    }, 3000)
+    // const timeout = setTimeout(() => {
+    //   renderNewBookingsView();
+    // }, 3000)
   })
 }
 
