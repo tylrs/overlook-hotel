@@ -24,6 +24,13 @@
   text-transform: capitalize;
 }
 
+.room-card:hover {
+  cursor: pointer;
+	// height: 85%;
+	// width: 45%;
+	box-shadow: 5px 10px 18px rgb(88, 161, 236);
+}
+
 .card-header {
   background-color: white;
   font-size: 1.2rem;
