@@ -18,6 +18,8 @@ let currentCustomer, hotel, currentDate, availableRooms, selectedRoom;
 const dashboard = document.getElementById('dashboard');
 const futureBookingsSection = document.getElementById('futureBookings');
 const pastBookingsSection = document.getElementById('pastBookings');
+const futureBookingsTitle = document.getElementById('futureBookingsTitle');
+const pastBookingsTitle = document.getElementById('pastBookingsTitle');
 const totalSpent = document.getElementById('totalSpent');
 const addNewBookingsButton = document.getElementById('addNewBookingsButton');
 const calendarView = document.getElementById('calendarView');
@@ -237,6 +239,8 @@ function populateDashboard(currentCustomer, currentDate, totalSpent) {
   domUpdates.renderBookingsCards(futureBookingsSection, currentCustomer, currentDate, 'future/present')
   domUpdates.renderBookingsCards(pastBookingsSection, currentCustomer, currentDate, 'past')
   domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
+  domUpdates.renderInnerText(futureBookingsTitle, `Upcoming Bookings for ${currentCustomer.name.split(' ')[0]}`)
+  domUpdates.renderInnerText(pastBookingsTitle, `Previous Bookings for ${currentCustomer.name.split(' ')[0]}`)
   domUpdates.show(dashboard);
   domUpdates.hide(loginView);
   availableRoomsSection.classList.remove('available-cards-centered');
