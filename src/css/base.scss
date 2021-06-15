@@ -6,6 +6,7 @@ $primary-background: white;
 @import '_text.scss';
 @import '_buttons.scss';
 @import '_cards.scss';
+@import '_mediaQueries.scss';
 
 body {
   background: $primary-background;
