@@ -156,6 +156,7 @@ function postNewBooking() {
   .then(data => {
     let message = "Congratulations, a new booking was added!"
     domUpdates.displayMessage(availableRoomsSection, message);
+    availableRoomsSection.classList.add('available-cards-centered');
     domUpdates.hide(submitBookingButton);
     domUpdates.hide(submitBookingButtonSection);
     domUpdates.hide(goBackCalendarButton);
@@ -167,6 +168,7 @@ function postNewBooking() {
   .catch(error => {
     let message = `Sorry, something went wrong on our end! Try Again!`
     domUpdates.displayMessage(availableRoomsSection, message)
+    availableRoomsSection.classList.add('available-cards-centered');
     domUpdates.hide(submitBookingButton);
     domUpdates.hide(submitBookingButtonSection);
     domUpdates.hide(cardSectionTitle);
@@ -203,6 +205,7 @@ function determineViewToGoBackTo(event) {
 
 function showAvailableRooms() {
   let searchDate = calendarInput.value;
+  availableRoomsSection.classList.remove('available-cards-centered');
   domUpdates.hide(calendarView);
   domUpdates.hide(submitBookingButton);
   domUpdates.hide(submitBookingButtonSection);
@@ -215,6 +218,7 @@ function showAvailableRooms() {
   } else {
     let message = 'Sorry, there are no available rooms for that day'
     domUpdates.displayMessage(availableRoomsSection, message)
+    availableRoomsSection.classList.add('available-cards-centered');
     domUpdates.hide(filterTagsSection);
     // domUpdates.hide(filterTagsSection);
     // const timeout = setTimeout(() => {
@@ -236,11 +240,13 @@ function populateDashboard(currentCustomer, currentDate, totalSpent) {
   domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
   domUpdates.show(dashboard);
   domUpdates.hide(loginView);
+  availableRoomsSection.classList.remove('available-cards-centered');
   domUpdates.show(addNewBookingsButton);
 }
 
 function renderNewBookingsView() {
   domUpdates.renderCalendar(calendarInput, currentDate);
+  availableRoomsSection.classList.remove('available-cards-centered');
   domUpdates.show(calendarView);
   domUpdates.hide(dashboard);
   domUpdates.hide(addNewBookingsButton);
