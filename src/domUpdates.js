@@ -52,7 +52,7 @@ let domUpdates = {
       room.bidet ? bidetMessage = 'Luxury Bidet' : bidetMessage = 'No bidet for you'
       availableRoomsSection.innerHTML +=
       `
-        <article class="room-card" id="${room.number}" tabindex=0>
+        <article class="room-card" id="${room.number}" role="button" tabindex=0>
           <div class="card-header">
             <h3>Date Available:</h3>
             <h3>${searchDate}</h3>
@@ -107,7 +107,7 @@ let domUpdates = {
       room.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
       availableRoomsSection.innerHTML +=
       `
-        <article class="${className}" id="${room.number}" tabindex=0>
+        <article class="${className}" id="${room.number}" role="button" tabindex=0>
           <div class="card-header">
             <h3>Date Available:</h3>
             <h3>${room.dateAvailable}</h3>
@@ -136,7 +136,7 @@ let domUpdates = {
     selectedRoom.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
     availableRoomsSection.innerHTML =
     `
-      <article class="big-room-card room-card" id="${selectedRoom.number}" tabindex=0>
+      <article class="big-room-card room-card" id="${selectedRoom.number}" role="button" tabindex=0>
         <div class="card-header">
           <h3>Date Available:</h3>
           <h3>${selectedRoom.dateAvailable}</h3>
