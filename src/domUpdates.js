@@ -109,7 +109,7 @@ let domUpdates = {
       tag.checked ? selectedType = tag.value : null;
       tag.checked = false;
     })
-    header.innerText = `Filtered by: ${selectedType}`;
+    header.innerText = `Rooms Filtered by: ${selectedType}`;
     let filteredByType = hotel.filterRoomByType(availableRooms, selectedType);
     let bidetMessage, className;
     filteredByType.length === 1 ? className = "big-room-card room-card" : className = "room-card";
