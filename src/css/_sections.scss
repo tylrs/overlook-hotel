@@ -1,10 +1,8 @@
 header {
   background-color: $primary-accentcolor;
-  display: flex;
-  justify-content: space-between;
   padding-left: 2%;
   padding-right: 2%;
-  align-items: center;
+  @include flex-layout(space-between, center, row);
 }
 
 .dashboard {
@@ -19,11 +17,9 @@ header {
 
 .booking-cards-section {
   height: 83%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   overflow-x: scroll;
   grid-column-gap: 2rem;
+  @include flex-layout(space-between, center, row);
 }
 
 .future-bookings {
@@ -43,9 +39,7 @@ header {
 .total-spent {
   background-color: $tertiary-accentcolor;
   color: $light-fontcolor;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  @include flex-layout(center, "", column);
   grid-area: totalSpent;
   text-align: center;
     * {
@@ -57,10 +51,7 @@ header {
 }
 
 .calendar-view {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  @include flex-layout(center, center, column);
   height: 100%;
 }
 
@@ -75,11 +66,9 @@ header {
 }
 
 .available-cards-section {
-  display: flex;
-  flex-direction: row;
   overflow-x: scroll;
   gap: 2rem;
-  justify-content: space-between;
+  @include flex-layout(space-between, "", row);
   padding-left: 2%;
 }
 
@@ -89,30 +78,22 @@ header {
 
 .login-view {
   background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-layout(center, center, row);
   height: 100%;
 }
 
 .login-container {
   background-color: $primary-accentcolor;
   color: $light-fontcolor;
-  display: flex;
-  flex-direction: column;
   grid-row-gap: 4%;
-  justify-content: center;
-  align-items: center;
+  @include flex-layout(center, center, column);
   border: 2px solid black;
   height: 65vh;
   width: 86vw;
 }
 
 .submit-booking-button-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include flex-layout(center, center, column);
 }
 
 .room-search-header {
