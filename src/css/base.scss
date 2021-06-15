@@ -2,6 +2,10 @@
 $primary-background: white;
 @import '_reset.scss';
 @import 'flatpickr/dist/flatpickr.css';
+@import '_variables.scss';
+@import '_text.scss';
+@import '_buttons.scss';
+@import '_cards.scss';
 
 body {
   background: $primary-background;
@@ -16,7 +20,7 @@ main {
 }
 
 header {
-  background-color: lightgreen;
+  background-color: $primary-accentcolor;
   display: flex;
   justify-content: space-between;
   padding-left: 2%;
@@ -24,50 +28,48 @@ header {
   align-items: center;
 }
 
-.add-new-bookings-button {
-  height: 50%;
+h1 {
+  color: $light-fontcolor;
 }
 
 .dashboard {
   height: 100%;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas:
-    "future future future totalSpent"
-    "past past past totalSpent"
+    "future future future future future totalSpent"
+    "past past past past past totalSpent"
 }
 
 .booking-cards-section {
-  height: 95%;
+  height: 83%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   overflow-x: scroll;
   grid-column-gap: 2rem;
 }
 
-.booking-card,
-.room-card {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  min-width: 25%;
-}
-
 .future-bookings {
-  background-color: lightyellow;
+  // background-color: $primary-neutralcolor
+  background-color: white;
   grid-area: future;
 }
 
 .past-bookings {
-  background-color: lightblue;
+  // background-color: $primary-neutralcolor;
+  background-color: white;
   grid-area: past;
 }
 
+.booking-cards-section {
+  padding-left: 2%;
+}
+
 .total-spent {
-  background-color: lightpink;
+  background-color: $tertiary-accentcolor;
+  color: $light-fontcolor;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -90,28 +92,122 @@ header {
 
 .available-room-view {
   height: 100%;
+  display: grid;
+  // grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: .25fr 1fr 1fr;
+  grid-template-areas:
+    "header"
+    "cards"
+    "filter"
 }
 
 .available-cards-section {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  // flex-wrap: wrap;
+  overflow-x: scroll;
   gap: 2rem;
+  justify-content: space-between;
+  padding-left: 2%;
 }
 
 .login-view {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%;
-  width: 100%;
+  // width: 100%;
 }
 
 .login-container {
+  background-color: $primary-accentcolor;
+  color: $light-fontcolor;
+  display: flex;
+  flex-direction: column;
+  grid-row-gap: 4%;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  height: 65vh;
+  width: 86vw;
+}
+
+.filter-tags-section {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+}
+
+.submit-booking-button-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
+}
+
+::-webkit-scrollbar {
+  background: $secondary-accentcolor;
+  // border-radius: 8px;
+  // color: $secondary-accentcolor;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  // border-radius: 8px;
+  border: 4px solid transparent;
+  border-left-width: 6px;
+  background-clip: content-box;
+}
+
+.filter-tags-container {
+  list-style-type: none;
+  text-transform: capitalize;
+}
+
+.filter-room-type-form {
+  // background-color: $secondary-accentcolor;
+}
+
+.filter-tag {
+   margin-bottom: 24%;
+   text-align: center;
+   // border-radius: 15px;
+   // padding: 0 0.5rem 0.1rem 0.5rem;
+   // font-size: 0.9rem;
+   // border: 1px solid black;
+   // text-align: center;
+   // color: bla;
+   // background-color: $tertiary-accentcolor;
+}
+
+.filter-tag-label {
+   margin-bottom: 24%;;
+   border-radius: 15px;
+   padding: 0 0.5rem 0.1rem 0.5rem;
+   font-size: 1rem;
+   border: 1px solid black;
+   text-align: center;
+   // color: bla;
+   // background-color: $tertiary-accentcolor;
+}
+
+.room-search-header {
+  display: grid;
+  grid-template-columns: .5fr 1fr .5fr;
+  grid-template-areas:
+  "button text .";
+  text-align: center;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + .filter-tag-label {
+  background-color: $secondary-accentcolor;
+  // color: white;
 }
 
 .hide {

@@ -1,0 +1,78 @@
+.future-bookings-section article {
+  background-color: $secondary-accentcolor;
+  // color: $light-fontcolor;
+}
+
+.past-bookings-section article {
+  background-color: $secondary-accentcolor;
+}
+
+.booking-card,
+.room-card {
+  background-color: $secondary-accentcolor;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 5px 10px 18px #26222D;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  // max-height: 71%;
+  height: 80%;
+  width: 40%;
+  min-width: 30%;
+  text-transform: capitalize;
+}
+
+.card-header {
+  background-color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  // height: 95%;
+  width: 100%;
+  border-top-right-radius: 39%;
+  border-top-left-radius: 39%;
+  // border-bottom-left-radius: 9%;
+  // border-bottom-right-radius: 9%;
+  padding-top: 5px;
+  color: black;
+  font-weight: bold;
+  border-bottom: solid black 2px;
+}
+
+.card-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+  "details cost";
+  height: 100%;
+  width: 100%;
+}
+
+.booking-info {
+  grid-area: details;
+  border-right: solid black 2px;
+  text-align: center;
+}
+
+.costPerNight {
+  grid-area: cost;
+  font-weight: bold;
+  text-align: center;
+}
+
+.booking-info,
+.costPerNight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.booking-info * {
+  margin-bottom: 3%;
+}
+
+.big-room-card {
+  margin-left: 29%
+}

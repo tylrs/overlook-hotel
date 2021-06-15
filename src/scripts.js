@@ -35,8 +35,9 @@ const userNameInput = document.getElementById('userNameInput');
 const passwordInput = document.getElementById('passwordInput');
 const loginView = document.getElementById('loginView');
 const errorMessageContainer = document.getElementById('errorMessageContainer');
+const submitBookingButtonSection = document.getElementById('submitBookingButtonSection');
 
-// window.onload = instantiateData();
+// window.onload = validateLogin();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
 searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
@@ -86,6 +87,7 @@ function displayClickedRoom(event) {
     })
     domUpdates.hide(filterTagsSection);
     domUpdates.show(submitBookingButton);
+    domUpdates.show(submitBookingButtonSection);
     domUpdates.displayRoomView(availableRoomsSection, selectedRoom);
   }
 }
@@ -145,8 +147,9 @@ function postNewBooking() {
   })
   .then(data => {
     let message = "Congratulations, a new booking was added!"
-    domUpdates.displayMessage(availableRoomsSection, message)
-    domUpdates.hide(submitBookingButton)
+    domUpdates.displayMessage(availableRoomsSection, message);
+    domUpdates.hide(submitBookingButton);
+    domUpdates.hide(submitBookingButtonSection);
     const timeout = setTimeout(() => {
       displayHomeView();
     }, 4000)
@@ -154,7 +157,8 @@ function postNewBooking() {
   .catch(error => {
     let message = `Sorry, something went wrong on our end! Try Again!`
     domUpdates.displayMessage(availableRoomsSection, message)
-    domUpdates.hide(submitBookingButton)
+    domUpdates.hide(submitBookingButton);
+    domUpdates.hide(submitBookingButtonSection);
     const timeout = setTimeout(() => {
       renderNewBookingsView();
     }, 4000)
@@ -189,6 +193,8 @@ function determineViewToGoBackTo(event) {
 function showAvailableRooms() {
   let searchDate = calendarInput.value;
   domUpdates.hide(calendarView);
+  domUpdates.hide(submitBookingButton);
+  domUpdates.hide(submitBookingButtonSection);
   domUpdates.show(availableRoomView);
   domUpdates.show(filterTagsSection);
   availableRooms = hotel.getAvailableRooms(searchDate);
@@ -217,6 +223,7 @@ function populateDashboard(currentCustomer, currentDate, totalSpent) {
   domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
   domUpdates.show(dashboard);
   domUpdates.hide(loginView);
+  domUpdates.show(addNewBookingsButton);
 }
 
 function renderNewBookingsView() {
@@ -224,4 +231,6 @@ function renderNewBookingsView() {
   domUpdates.show(calendarView);
   domUpdates.hide(dashboard);
   domUpdates.hide(addNewBookingsButton);
+  domUpdates.hide(submitBookingButton);
+  domUpdates.hide(submitBookingButtonSection);
 }

@@ -9,24 +9,24 @@
 <body>
   <header>
     <h1>The Overlook Hotel</h1>
-    <button type="button" name="button" class="add-new-bookings-button" id="addNewBookingsButton">Add New Booking</button>
+    <button type="button" name="button" class="add-new-bookings-button medium-button hide" id="addNewBookingsButton">New Booking</button>
   </header>
   <main>
     <section class="login-view" id="loginView">
       <form class="login-container" id="loginContainer">
-        <h2>Login To Your Account</h2>
-        <label for="userName">UserName</label>
-        <input type="text" name="" value="" id="userNameInput" required>
+        <h2 class="login-title">The Overlook Hotel</h2>
+        <label for="userName">Username</label>
+        <input type="text" name="" value="customer25" id="userNameInput" required>
         <label for="password">Password</label>
-        <input type="text" name="" value="" id="passwordInput" required>
-        <button type="button" name="button" id="loginButton">Login</button>
+        <input type="text" name="" value="overlook2020" id="passwordInput" required>
+        <button type="button" name="button" class="medium-button" id="loginButton">Login</button>
         <div class="error-message-container hide" id="errorMessageContainer"></div>
       </form>
     </section>
     <section class="dashboard hide" id="dashboard">
       <section class="future-bookings">
-        <h2>Upcoming Bookings</h2>
-        <section class="booking-cards-section" id="futureBookings">
+        <h2 class="card-section-title">Upcoming Bookings</h2>
+        <section class="booking-cards-section future-bookings-section" id="futureBookings">
           <!-- <article class="booking-card">
             <h5>2020/02/03</h4>
             <p>Residential Suite</p>
@@ -36,8 +36,8 @@
         </section>
       </section>
       <section class="past-bookings">
-        <h2>Past Bookings</h2>
-        <article class="booking-cards-section" id="pastBookings">
+        <h2 class="card-section-title">Past Bookings</h2>
+        <article class="booking-cards-section past-bookings-section" id="pastBookings">
 
         </article>
       </section>
@@ -47,25 +47,28 @@
       </aside>
     </section>
     <section class="calendar-view hide"id="calendarView">
-      <label for="calendarInput">Choose a Date to Search</label>
-      <button id="searchCalendar">Search for Available Rooms</button>
+      <label for="calendarInput" class="calendar-input-label">Choose a Date to Search</label>
       <input type="text" placeholder="Select Date" class="calendar-input" id="calendarInput" data-input>
+      <button class="search-calendar-button" id="searchCalendar">Search for Available Rooms</button>
     </section>
     <section class="available-room-view hide" id="availableRoomView">
-      <div id="roomSearchHeader">
-        <button id="goBackButton">BACK</button>
-        <h2>Available Rooms</h2>
+      <div class="room-search-header" id="roomSearchHeader">
+        <button class="medium-button go-back-button" id="goBackButton">BACK</button>
+        <h2 class="card-section-title">Available Rooms</h2>
       </div>
       <section class="available-cards-section" id="availableRoomsSection">
 
       </section>
-      <button class="hide" id='submitBookingButton'>Book this room now!</button>
+      <section class="hide submit-booking-button-section" id="submitBookingButtonSection">
+        <button class="hide medium-button submit-booking-button" id='submitBookingButton'>Book this room now!</button>
+      </section>
       <section class="filter-tags-section hide" id="filterTagsSection">
+        <h3 class="filter-section-title">Filter Available Rooms by Room Type</h3>
         <form class="filter-room-type-form" action="index.html">
           <fieldset class="filter-tags-container" id="filterTagsContainer">
 
           </fieldset>
-          <button id="filterRoomTypeButton">Filter By Room Type</button>
+          <button class="medium-button filter-button" id="filterRoomTypeButton">Filter</button>
         </form>
       </section>
     </section>
