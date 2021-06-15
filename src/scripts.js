@@ -65,7 +65,7 @@ function validateLogin() {
       domUpdates.show(errorMessageContainer);
       const timeout = setTimeout(() => {
         domUpdates.hide(errorMessageContainer);
-      }, 4000)
+      }, 3000)
     })
   }
 }
@@ -110,7 +110,7 @@ function instantiateCustomerLogin(customer) {
       domUpdates.show(errorMessageContainer);
       const timeout = setTimeout(() => {
         domUpdates.hide(errorMessageContainer);
-      }, 4000)
+      }, 3000)
     })
 }
 
@@ -131,7 +131,7 @@ function instantiateData() {
       domUpdates.show(errorMessageContainer);
       const timeout = setTimeout(() => {
         domUpdates.hide(errorMessageContainer);
-      }, 4000)
+      }, 3000)
     })
 }
 
@@ -152,7 +152,7 @@ function postNewBooking() {
     domUpdates.hide(submitBookingButtonSection);
     const timeout = setTimeout(() => {
       displayHomeView();
-    }, 4000)
+    }, 3000)
   })
   .catch(error => {
     let message = `Sorry, something went wrong on our end! Try Again!`
@@ -161,7 +161,7 @@ function postNewBooking() {
     domUpdates.hide(submitBookingButtonSection);
     const timeout = setTimeout(() => {
       renderNewBookingsView();
-    }, 4000)
+    }, 3000)
   })
 }
 
@@ -206,7 +206,7 @@ function showAvailableRooms() {
     domUpdates.displayMessage(availableRoomsSection, message)
     const timeout = setTimeout(() => {
       renderNewBookingsView();
-    }, 4000)
+    }, 3000)
   }
 }
 
