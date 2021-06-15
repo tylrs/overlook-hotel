@@ -11,8 +11,8 @@ let domUpdates = {
       `
         <article class="booking-card">
           <div class="card-header">
-            <h4>Your Booking On:</h4>
-            <h4>${booking.date}</h4>
+            <h3>Your Booking On:</h3>
+            <h3>${booking.date}</h3>
           </div>
           <div class="card-details">
             <div class="booking-info">
@@ -53,7 +53,7 @@ let domUpdates = {
       availableRoomsSection.innerHTML +=
       // `
       // <article class="room-card" id="${room.number}">
-      //   <h4>${searchDate}</h4>
+      //   <h3>${searchDate}</h4>
       //   <h5>${room.roomType}</h5>
       //   <p>Room Number ${room.number}</p>
       //   <p>Beds: ${room.numBeds} ${room.bedSize}<p>
@@ -65,8 +65,8 @@ let domUpdates = {
       `
         <article class="room-card" id="${room.number}">
           <div class="card-header">
-            <h4>Date Available:</h4>
-            <h4>${searchDate}</h4>
+            <h3>Date Available:</h3>
+            <h3>${searchDate}</h3>
           </div>
           <div class="card-details">
             <div class="booking-info">
@@ -118,7 +118,7 @@ let domUpdates = {
       availableRoomsSection.innerHTML +=
       // `
       //   <article class="room-card" id="${room.number}">
-      //     <h4>${room.dateAvailable}</h4>
+      //     <h3>${room.dateAvailable}</h3>
       //     <h5>${room.roomType}</h5>
       //     <p>Room Number ${room.number}</p>
       //     <p>Beds: ${room.numBeds} ${room.bedSize}</p>
@@ -130,8 +130,8 @@ let domUpdates = {
       `
         <article class="${className}" id="${room.number}">
           <div class="card-header">
-            <h4>Date Available:</h4>
-            <h4>${room.dateAvailable}</h4>
+            <h3>Date Available:</h3>
+            <h3>${room.dateAvailable}</h3>
           </div>
           <div class="card-details">
             <div class="booking-info">
@@ -158,7 +158,7 @@ let domUpdates = {
     availableRoomsSection.innerHTML =
     // `
     //   <article class="big-room-card" id="${selectedRoom.number}">
-    //     <h4>${selectedRoom.dateAvailable}</h4>
+    //     <h3>${selectedRoom.dateAvailable}</h3>
     //     <h5>${selectedRoom.roomType}</h5>
     //     <p>Room Number ${selectedRoom.number}</p>
     //     <p>Beds: ${selectedRoom.numBeds} ${selectedRoom.bedSize}</p>
@@ -169,7 +169,7 @@ let domUpdates = {
     // `
     // `
     //   <article class="big-room-card room-card" id="${selectedRoom.number}">
-    //     <h4>${selectedRoom.dateAvailable}</h4>
+    //     <h3>${selectedRoom.dateAvailable}</h3>
     //     <h5>${selectedRoom.roomType}</h5>
     //     <p>Room Number ${selectedRoom.number}</p>
     //     <p>Beds: ${selectedRoom.numBeds} ${selectedRoom.bedSize}</p>
@@ -181,8 +181,8 @@ let domUpdates = {
     `
       <article class="big-room-card room-card" id="${selectedRoom.number}">
         <div class="card-header">
-          <h4>Date Available:</h4>
-          <h4>${selectedRoom.dateAvailable}</h4>
+          <h3>Date Available:</h3>
+          <h3>${selectedRoom.dateAvailable}</h3>
         </div>
         <div class="card-details">
           <div class="booking-info">
