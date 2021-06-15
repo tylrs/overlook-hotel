@@ -37,19 +37,19 @@ const loginView = document.getElementById('loginView');
 const errorMessageContainer = document.getElementById('errorMessageContainer');
 const submitBookingButtonSection = document.getElementById('submitBookingButtonSection');
 
-// window.onload = validateLogin();
+window.onload = validateLogin();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
 searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
 goBackButton.addEventListener('click', determineViewToGoBackTo);
 availableRoomsSection.addEventListener('click', displayClickedRoom);
 // not sure how to deal with this yet....
-availableRoomsSection.addEventListener('keyup', displayClickedRoom);
+availableRoomsSection.addEventListener('keydown', displayClickedRoom);
 submitBookingButton.addEventListener('click', postNewBooking)
 loginButton.addEventListener('click', validateLogin);
 
 function validateLogin() {
-  event.preventDefault();
+  // event.preventDefault();
   let userName = userNameInput.value;
   let password = passwordInput.value;
   passwordInput.value = '';
@@ -83,7 +83,12 @@ function fetchAllData() {
 }
 
 function displayClickedRoom(event) {
-  if (event.target.closest('article')) {
+  event.preventDefault();
+  console.log(event)
+  if (event instanceof MouseEvent) {
+    console.log('hello')
+  }
+  if ((event.target.closest('article') && event instanceof MouseEvent) || event.keyCode === 13) {
     selectedRoom = availableRooms.find(room => {
       return room.number === parseInt(event.target.closest('article').id);
     })
@@ -208,7 +213,7 @@ function showAvailableRooms() {
     domUpdates.displayMessage(availableRoomsSection, message)
     const timeout = setTimeout(() => {
       renderNewBookingsView();
-    }, 3000)
+    }, 3000000)
   }
 }
 
