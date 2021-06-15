@@ -1,0 +1,19 @@
+@media screen and (max-width: 600px) {
+  .booking-card,
+  .room-card {
+    min-width: 60%;
+  }
+
+  .big-room-card {
+    margin-left: 20%;
+  }
+
+  body .booking-cards-section {
+    height: 76%;
+  }
+
+  body .error-message {
+    margin-left: 3rem;
+  }
+
+}

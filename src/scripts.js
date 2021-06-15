@@ -25,6 +25,7 @@ const calendarInput = document.getElementById('calendarInput');
 const searchCalendar = document.getElementById('searchCalendar');
 const availableRoomView = document.getElementById('availableRoomView');
 const availableRoomsSection = document.getElementById('availableRoomsSection');
+const cardSectionTitle = document.getElementById('cardSectionTitle');
 const filterTagsSection = document.getElementById('filterTagsSection');
 const filterTagsContainer = document.getElementById('filterTagsContainer');
 const filterRoomTypeButton = document.getElementById('filterRoomTypeButton');
@@ -37,17 +38,19 @@ const loginView = document.getElementById('loginView');
 const errorMessageContainer = document.getElementById('errorMessageContainer');
 const submitBookingButtonSection = document.getElementById('submitBookingButtonSection');
 
-// window.onload = validateLogin();
+window.onload = validateLogin();
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
 searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
 goBackButton.addEventListener('click', determineViewToGoBackTo);
 availableRoomsSection.addEventListener('click', displayClickedRoom);
+// not sure how to deal with this yet....
+availableRoomsSection.addEventListener('keydown', displayClickedRoom);
 submitBookingButton.addEventListener('click', postNewBooking)
 loginButton.addEventListener('click', validateLogin);
 
 function validateLogin() {
-  event.preventDefault();
+  // event.preventDefault();
   let userName = userNameInput.value;
   let password = passwordInput.value;
   passwordInput.value = '';
@@ -65,7 +68,7 @@ function validateLogin() {
       domUpdates.show(errorMessageContainer);
       const timeout = setTimeout(() => {
         domUpdates.hide(errorMessageContainer);
-      }, 4000)
+      }, 3000)
     })
   }
 }
@@ -81,7 +84,12 @@ function fetchAllData() {
 }
 
 function displayClickedRoom(event) {
-  if (event.target.closest('article')) {
+  // event.preventDefault();
+  console.log(event)
+  if (event instanceof MouseEvent) {
+    console.log('hello')
+  }
+  if ((event.target.closest('article') && event instanceof MouseEvent) || event.keyCode === 13) {
     selectedRoom = availableRooms.find(room => {
       return room.number === parseInt(event.target.closest('article').id);
     })
@@ -110,7 +118,7 @@ function instantiateCustomerLogin(customer) {
       domUpdates.show(errorMessageContainer);
       const timeout = setTimeout(() => {
         domUpdates.hide(errorMessageContainer);
-      }, 4000)
+      }, 3000)
     })
 }
 
@@ -131,7 +139,7 @@ function instantiateData() {
       domUpdates.show(errorMessageContainer);
       const timeout = setTimeout(() => {
         domUpdates.hide(errorMessageContainer);
-      }, 4000)
+      }, 3000)
     })
 }
 
@@ -148,20 +156,25 @@ function postNewBooking() {
   .then(data => {
     let message = "Congratulations, a new booking was added!"
     domUpdates.displayMessage(availableRoomsSection, message);
+    availableRoomsSection.classList.add('available-cards-centered');
     domUpdates.hide(submitBookingButton);
     domUpdates.hide(submitBookingButtonSection);
+    domUpdates.hide(goBackCalendarButton);
+    domUpdates.hide(cardSectionTitle);
     const timeout = setTimeout(() => {
       displayHomeView();
-    }, 4000)
+    }, 3000)
   })
   .catch(error => {
     let message = `Sorry, something went wrong on our end! Try Again!`
     domUpdates.displayMessage(availableRoomsSection, message)
+    availableRoomsSection.classList.add('available-cards-centered');
     domUpdates.hide(submitBookingButton);
     domUpdates.hide(submitBookingButtonSection);
-    const timeout = setTimeout(() => {
-      renderNewBookingsView();
-    }, 4000)
+    domUpdates.hide(cardSectionTitle);
+    // const timeout = setTimeout(() => {
+    //   renderNewBookingsView();
+    // }, 3000)
   })
 }
 
@@ -192,21 +205,26 @@ function determineViewToGoBackTo(event) {
 
 function showAvailableRooms() {
   let searchDate = calendarInput.value;
+  availableRoomsSection.classList.remove('available-cards-centered');
   domUpdates.hide(calendarView);
   domUpdates.hide(submitBookingButton);
   domUpdates.hide(submitBookingButtonSection);
   domUpdates.show(availableRoomView);
   domUpdates.show(filterTagsSection);
+  domUpdates.show(goBackCalendarButton);
   availableRooms = hotel.getAvailableRooms(searchDate);
   if (availableRooms.length) {
     domUpdates.renderAvailableRooms(availableRoomsSection, availableRooms, searchDate);
     domUpdates.renderAvailableTags(filterTagsContainer, availableRooms)
   } else {
-    let message = 'Sorry, there were no available rooms for that day'
+    let message = 'Sorry, there are no available rooms for that day'
     domUpdates.displayMessage(availableRoomsSection, message)
-    const timeout = setTimeout(() => {
-      renderNewBookingsView();
-    }, 4000)
+    availableRoomsSection.classList.add('available-cards-centered');
+    domUpdates.hide(filterTagsSection);
+    // domUpdates.hide(filterTagsSection);
+    // const timeout = setTimeout(() => {
+    //   renderNewBookingsView();
+    // }, 3000000)
   }
 }
 
@@ -223,11 +241,13 @@ function populateDashboard(currentCustomer, currentDate, totalSpent) {
   domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
   domUpdates.show(dashboard);
   domUpdates.hide(loginView);
+  availableRoomsSection.classList.remove('available-cards-centered');
   domUpdates.show(addNewBookingsButton);
 }
 
 function renderNewBookingsView() {
   domUpdates.renderCalendar(calendarInput, currentDate);
+  availableRoomsSection.classList.remove('available-cards-centered');
   domUpdates.show(calendarView);
   domUpdates.hide(dashboard);
   domUpdates.hide(addNewBookingsButton);
