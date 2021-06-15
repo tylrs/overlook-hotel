@@ -44,7 +44,6 @@ searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
 goBackButton.addEventListener('click', determineViewToGoBackTo);
 availableRoomsSection.addEventListener('click', displayClickedRoom);
-// not sure how to deal with this yet....
 availableRoomsSection.addEventListener('keydown', displayClickedRoom);
 submitBookingButton.addEventListener('click', postNewBooking)
 loginButton.addEventListener('click', validateLogin);
@@ -84,11 +83,6 @@ function fetchAllData() {
 }
 
 function displayClickedRoom(event) {
-  // event.preventDefault();
-  console.log(event)
-  if (event instanceof MouseEvent) {
-    console.log('hello')
-  }
   if ((event.target.closest('article') && event instanceof MouseEvent) || event.keyCode === 13) {
     selectedRoom = availableRooms.find(room => {
       return room.number === parseInt(event.target.closest('article').id);
@@ -212,12 +206,16 @@ function showAvailableRooms() {
   domUpdates.show(availableRoomView);
   domUpdates.show(filterTagsSection);
   domUpdates.show(goBackCalendarButton);
+  domUpdates.show(cardSectionTitle);
   availableRooms = hotel.getAvailableRooms(searchDate);
   if (availableRooms.length) {
     domUpdates.renderAvailableRooms(availableRoomsSection, availableRooms, searchDate);
     domUpdates.renderAvailableTags(filterTagsContainer, availableRooms)
   } else {
     let message = 'Sorry, there are no available rooms for that day'
+    availableRoomsSection.innerHTML = '';
+    let header = document.querySelector('#roomSearchHeader h2');
+    header.innerText = 'Available Rooms';
     domUpdates.displayMessage(availableRoomsSection, message)
     availableRoomsSection.classList.add('available-cards-centered');
     domUpdates.hide(filterTagsSection);
