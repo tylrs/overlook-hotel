@@ -115,16 +115,35 @@ let domUpdates = {
     filteredByType.forEach(room => {
       room.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
       availableRoomsSection.innerHTML +=
+      // `
+      //   <article class="room-card" id="${room.number}">
+      //     <h4>${room.dateAvailable}</h4>
+      //     <h5>${room.roomType}</h5>
+      //     <p>Room Number ${room.number}</p>
+      //     <p>Beds: ${room.numBeds} ${room.bedSize}</p>
+      //     <p>$${room.costPerNight}/ night</p>
+      //     <p>Bidet included?</p>
+      //     <p>${bidetMessage}</p>
+      //   </article>
+      // `
       `
-      <article class="room-card" id="${room.number}">
-        <h4>${room.dateAvailable}</h4>
-        <h5>${room.roomType}</h5>
-        <p>Room Number ${room.number}</p>
-        <p>Beds: ${room.numBeds} ${room.bedSize}</p>
-        <p>$${room.costPerNight}/ night</p>
-        <p>Bidet included?</p>
-        <p>${bidetMessage}</p>
-      </article>
+        <article class="room-card" id="${room.number}">
+          <div class="card-header">
+            <h4>Date Available:</h4>
+            <h4>${room.dateAvailable}</h4>
+          </div>
+          <div class="card-details">
+            <div class="booking-info">
+              <p>Room #${room.number}</p>
+              <p>${room.roomType}</p>
+              <p>Beds: ${room.numBeds} ${room.bedSize}</p>
+              <p>${bidetMessage}</p>
+            </div>
+            <div class="costPerNight">
+              <p>$${room.costPerNight}/ night</p>
+            </div>
+          </div>
+        </article>
       `
     })
   },
@@ -136,15 +155,45 @@ let domUpdates = {
     let bidetMessage;
     selectedRoom.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
     availableRoomsSection.innerHTML =
+    // `
+    //   <article class="big-room-card" id="${selectedRoom.number}">
+    //     <h4>${selectedRoom.dateAvailable}</h4>
+    //     <h5>${selectedRoom.roomType}</h5>
+    //     <p>Room Number ${selectedRoom.number}</p>
+    //     <p>Beds: ${selectedRoom.numBeds} ${selectedRoom.bedSize}</p>
+    //     <p>$${selectedRoom.costPerNight}/ night</p>
+    //     <p>Bidet included?</p>
+    //     <p>${bidetMessage}</p>
+    //   </article>
+    // `
+    // `
+    //   <article class="big-room-card room-card" id="${selectedRoom.number}">
+    //     <h4>${selectedRoom.dateAvailable}</h4>
+    //     <h5>${selectedRoom.roomType}</h5>
+    //     <p>Room Number ${selectedRoom.number}</p>
+    //     <p>Beds: ${selectedRoom.numBeds} ${selectedRoom.bedSize}</p>
+    //     <p>$${selectedRoom.costPerNight}/ night</p>
+    //     <p>Bidet included?</p>
+    //     <p>${bidetMessage}</p>
+    //   </article>
+    // `
     `
-      <article class="big-room-card" id="${selectedRoom.number}">
-        <h4>${selectedRoom.dateAvailable}</h4>
-        <h5>${selectedRoom.roomType}</h5>
-        <p>Room Number ${selectedRoom.number}</p>
-        <p>Beds: ${selectedRoom.numBeds} ${selectedRoom.bedSize}</p>
-        <p>$${selectedRoom.costPerNight}/ night</p>
-        <p>Bidet included?</p>
-        <p>${bidetMessage}</p>
+      <article class="big-room-card room-card" id="${selectedRoom.number}">
+        <div class="card-header">
+          <h4>Date Available:</h4>
+          <h4>${selectedRoom.dateAvailable}</h4>
+        </div>
+        <div class="card-details">
+          <div class="booking-info">
+            <p>Room #${selectedRoom.number}</p>
+            <p>${selectedRoom.roomType}</p>
+            <p>Beds: ${selectedRoom.numBeds} ${selectedRoom.bedSize}</p>
+            <p>${bidetMessage}</p>
+          </div>
+          <div class="costPerNight">
+            <p>$${selectedRoom.costPerNight}/ night</p>
+          </div>
+        </div>
       </article>
     `
   },
