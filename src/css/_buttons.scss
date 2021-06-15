@@ -5,6 +5,10 @@
   font-size: 1.7rem;
   height: 2rem;
   width: 7rem;
+    &:hover {
+      background-color: #ccecff;
+      cursor: pointer;
+    }
 }
 
 .search-calendar-button {
@@ -13,6 +17,10 @@
   border-radius: 4px;
   margin-top: 3%;
   border: 1px solid black;
+    &:hover {
+      background-color: #ccecff;
+      cursor: pointer;
+    }
 }
 
 .add-new-bookings-button {
