@@ -1,0 +1,124 @@
+header {
+  background-color: $primary-accentcolor;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 2%;
+  padding-right: 2%;
+  align-items: center;
+}
+
+.dashboard {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "future future future future future totalSpent"
+    "past past past past past totalSpent"
+}
+
+.booking-cards-section {
+  height: 83%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow-x: scroll;
+  grid-column-gap: 2rem;
+}
+
+.future-bookings {
+  background-color: white;
+  grid-area: future;
+}
+
+.past-bookings {
+  background-color: white;
+  grid-area: past;
+}
+
+.booking-cards-section {
+  padding-left: 2%;
+}
+
+.total-spent {
+  background-color: $tertiary-accentcolor;
+  color: $light-fontcolor;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-area: totalSpent;
+  text-align: center;
+    * {
+      background-color: white;
+      background-color: #ffffff9e;
+      color: black;
+      padding: 6%;
+    }
+}
+
+.calendar-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.available-room-view {
+  height: 100%;
+  display: grid;
+  grid-template-rows: .25fr 1fr 1fr;
+  grid-template-areas:
+    "header"
+    "cards"
+    "filter"
+}
+
+.available-cards-section {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  gap: 2rem;
+  justify-content: space-between;
+  padding-left: 2%;
+}
+
+.available-cards-centered {
+  justify-content: center;
+}
+
+.login-view {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login-container {
+  background-color: $primary-accentcolor;
+  color: $light-fontcolor;
+  display: flex;
+  flex-direction: column;
+  grid-row-gap: 4%;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  height: 65vh;
+  width: 86vw;
+}
+
+.submit-booking-button-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.room-search-header {
+  display: grid;
+  grid-template-columns: .5fr 1fr .5fr;
+  grid-template-areas:
+  "button text .";
+  text-align: center;
+}

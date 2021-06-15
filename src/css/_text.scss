@@ -12,6 +12,10 @@
   margin-left: 2%;
 }
 
+.error-message {
+  font-size: 2rem;
+}
+
 .calendar-input-label {
   font-size: 5rem;
   margin-bottom: 4%;
@@ -21,4 +25,9 @@
   font-size: 1.7rem;
   margin-top: 5%;
   margin-bottom: 4%;
+}
+
+h1 {
+  color: $light-fontcolor;
+  font-size: 1.4rem;
 }
