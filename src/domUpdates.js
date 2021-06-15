@@ -111,7 +111,8 @@ let domUpdates = {
     })
     header.innerText = `Filtered by: ${selectedType}`;
     let filteredByType = hotel.filterRoomByType(availableRooms, selectedType);
-    let bidetMessage;
+    let bidetMessage, className;
+    filteredByType.length === 1 ? className = "big-room-card room-card" : className = "room-card";
     filteredByType.forEach(room => {
       room.bidet ? bidetMessage = 'Hooray there\'s a bidet!' : bidetMessage = 'No bidet for you'
       availableRoomsSection.innerHTML +=
@@ -127,7 +128,7 @@ let domUpdates = {
       //   </article>
       // `
       `
-        <article class="room-card" id="${room.number}">
+        <article class="${className}" id="${room.number}">
           <div class="card-header">
             <h4>Date Available:</h4>
             <h4>${room.dateAvailable}</h4>
