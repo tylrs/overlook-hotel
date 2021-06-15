@@ -34,8 +34,11 @@ The project spec can be found [here](https://frontend.turing.edu/projects/overlo
 
 ## Features
 
+### GIF showing user login
+![GIF showing user login]('./gifs/user-login.gif')
+
 ### GIF showing users future and past bookings
-![GIF showing users future and past bookings]()
+![GIF showing users future and past bookings]('./gifs/user-bookings.gif')
 
 ### GIF showing calendar and available cards
 ![GIF showing calendar and available cards]()
