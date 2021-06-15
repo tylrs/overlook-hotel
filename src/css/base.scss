@@ -210,6 +210,13 @@ input[type="radio"]:checked + .filter-tag-label {
   // color: white;
 }
 
+.total-spent * {
+  background-color: white;
+  background-color: #ffffff9e;
+    color: black;
+    padding: 6%;
+}
+
 .hide {
   display: none;
 }
