@@ -6,13 +6,12 @@ The project spec can be found [here](https://frontend.turing.edu/projects/overlo
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Features](#Demonstration)
-- [Technologies](#Technologies)
-- [Setup](#Setup/execution-Instructions)
-- [Future Iterations](#Future)
-- [Original Assignment](#Original)
+- [Install](#Install)
+- [Goals](#Goals)
+- [Features](#Features)
 - [Contributors](#Contributors)
+- [Technologies](#Technologies)
+- [Future Iterations](#Future)
 
 ## Install
 
