@@ -9,7 +9,7 @@ let domUpdates = {
       booking.bidet ? bidetMessage = 'Luxury Bidet' : bidetMessage = 'Sorry, no bidet'
       element.innerHTML +=
       `
-        <article class="booking-card" tabindex=0>
+        <article class="booking-card">
           <div class="card-header">
             <h3>Your Booking On:</h3>
             <h3>${booking.date}</h3>
@@ -159,18 +159,20 @@ let domUpdates = {
   displayMessage(element, message) {
     element.innerHTML = ''
     element.innerHTML = `<p class="error-message">${message}</p>`
-    // const timeout = setTimeout(() => {
-    //   element.innerHTML = ''
-    // }, 5000000)
   },
 
-  show(element) {
-    element.classList.remove('hide');
+  show(elements) {
+    elements.forEach(element => {
+      element.classList.remove('hide');
+    })
   },
 
-  hide(element) {
-    element.classList.add('hide');
+  hide(elements) {
+    elements.forEach(element => {
+      element.classList.add('hide');
+    })
   }
+
 }
 
 export default domUpdates;

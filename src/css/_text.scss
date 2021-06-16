@@ -4,6 +4,7 @@
 
 .total-spent-title {
   font-size: 1.7rem;
+  overflow: hidden;
 }
 
 .card-section-title {
@@ -27,7 +28,7 @@
   margin-bottom: 4%;
 }
 
-h1 {
+.app-title {
   color: $light-fontcolor;
   font-size: 1.4rem;
 }

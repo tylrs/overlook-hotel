@@ -17,7 +17,7 @@ describe('User Class', function() {
   });
 
   it('should have a default password of overlook2020', function() {
-    expect(user.password).to.equal('overlook2020');
+    expect(user.password).to.equal('overlook2021');
   });
 
   it('should have a isManager property with a default value of false', function() {

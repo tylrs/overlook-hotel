@@ -11,6 +11,15 @@
     }
 }
 
+.app-title-button {
+  background-color: $primary-accentcolor;
+}
+
+.app-title:hover {
+  color: #ccecff;
+  cursor: pointer;
+}
+
 .search-calendar-button {
   padding: 1%;
   background-color: $secondary-accentcolor;
