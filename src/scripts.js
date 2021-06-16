@@ -23,7 +23,7 @@ const cardSectionTitle = document.getElementById('cardSectionTitle');
 const filterTagsSection = document.getElementById('filterTagsSection');
 const filterTagsContainer = document.getElementById('filterTagsContainer');
 const filterRoomTypeButton = document.getElementById('filterRoomTypeButton');
-const goBackCalendarButton = document.getElementById('goBackButton');
+const goBackButton = document.getElementById('goBackButton');
 const submitBookingButton = document.getElementById('submitBookingButton');
 const loginButton = document.getElementById('loginButton');
 const userNameInput = document.getElementById('userNameInput');
@@ -119,7 +119,7 @@ function showAvailableRooms() {
   let searchDate = calendarInput.value;
   availableRoomsSection.classList.remove('available-cards-centered');
   domUpdates.hide([calendarView, submitBookingButton, submitBookingButtonSection]);
-  domUpdates.show([availableRoomView, filterTagsSection, goBackCalendarButton, cardSectionTitle]);
+  domUpdates.show([availableRoomView, filterTagsSection, goBackButton, cardSectionTitle]);
   availableRooms = hotel.getAvailableRooms(searchDate);
   if (availableRooms.length) {
     domUpdates.renderAvailableRooms(availableRoomsSection, availableRooms, searchDate);
@@ -146,7 +146,7 @@ function renderNewBookingsView() {
   domUpdates.renderCalendar(calendarInput, currentDate);
   availableRoomsSection.classList.remove('available-cards-centered');
   domUpdates.show([calendarView]);
-  domUpdates.hide([dashboard, addNewBookingsButton, submitBookingButton, submitBookingButtonSection]);
+  domUpdates.hide([dashboard, availableRoomView, addNewBookingsButton, submitBookingButton, submitBookingButtonSection]);
 }
 
 function displayClickedRoom(event) {
@@ -174,7 +174,7 @@ function postNewBooking() {
     let message = "Congratulations, a new booking was added!"
     domUpdates.displayMessage(availableRoomsSection, message);
     availableRoomsSection.classList.add('available-cards-centered');
-    domUpdates.hide([submitBookingButton, submitBookingButtonSection, goBackCalendarButton, cardSectionTitle]);
+    domUpdates.hide([submitBookingButton, submitBookingButtonSection, goBackButton, cardSectionTitle]);
     const timeout = setTimeout(() => {
       displayHomeView();
     }, 2000)
