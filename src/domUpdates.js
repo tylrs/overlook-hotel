@@ -9,7 +9,7 @@ let domUpdates = {
       booking.bidet ? bidetMessage = 'Luxury Bidet' : bidetMessage = 'Sorry, no bidet'
       element.innerHTML +=
       `
-        <article class="booking-card" tabindex=0>
+        <article class="booking-card">
           <div class="card-header">
             <h3>Your Booking On:</h3>
             <h3>${booking.date}</h3>
@@ -172,7 +172,7 @@ let domUpdates = {
       element.classList.add('hide');
     })
   }
-  
+
 }
 
 export default domUpdates;
