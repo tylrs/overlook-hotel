@@ -50,18 +50,18 @@ function validateLogin() {
   userNameInput.value = '';
   if (userName.includes('customer')) {
     fetchCustomer(userName.split('r')[1])
-    .then(data => {
-      let customer = new Customer(data)
-      validatePassword(customer, password);
-    })
-    .catch(error => {
-      let message = `Error please try a different username or password!`
-      domUpdates.displayMessage(errorMessageContainer, message)
-      domUpdates.show([errorMessageContainer]);
-      const timeout = setTimeout(() => {
-        domUpdates.hide([errorMessageContainer]);
-      }, 3000)
-    })
+      .then(data => {
+        let customer = new Customer(data)
+        validatePassword(customer, password);
+      })
+      .catch(() => {
+        let message = `Error please try a different username or password!`
+        domUpdates.displayMessage(errorMessageContainer, message)
+        domUpdates.show([errorMessageContainer]);
+        const timeout = setTimeout(() => {
+          domUpdates.hide([errorMessageContainer]);
+        }, 3000)
+      })
   } else {
     let message = `Error please try a different username or password!`
     domUpdates.displayMessage(errorMessageContainer, message)
@@ -90,7 +90,7 @@ function instantiateCustomerLogin(customer) {
       currentCustomer = hotel.customers[0];
       populateDashboard(currentCustomer, currentDate, totalSpent);
     })
-    .catch((error) => {
+    .catch(() => {
       let message = `Error please try logging in again!`
       domUpdates.displayMessage(errorMessageContainer, message)
       domUpdates.show([errorMessageContainer]);
@@ -163,28 +163,28 @@ function displayClickedRoom(event) {
 function postNewBooking() {
   let data = formatPost();
   postApiData(data)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error()
-    } else {
-      return response.json();
-    }
-  })
-  .then(data => {
-    let message = "Congratulations, a new booking was added!"
-    domUpdates.displayMessage(availableRoomsSection, message);
-    availableRoomsSection.classList.add('available-cards-centered');
-    domUpdates.hide([submitBookingButton, submitBookingButtonSection, goBackButton, cardSectionTitle]);
-    const timeout = setTimeout(() => {
-      displayHomeView();
-    }, 2000)
-  })
-  .catch(error => {
-    let message = `Sorry, something went wrong on our end! Try Again!`
-    domUpdates.displayMessage(availableRoomsSection, message)
-    availableRoomsSection.classList.add('available-cards-centered');
-    domUpdates.hide([submitBookingButton, submitBookingButtonSection, cardSectionTitle]);
-  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error()
+      } else {
+        return response.json();
+      }
+    })
+    .then(() => {
+      let message = "Congratulations, a new booking was added!"
+      domUpdates.displayMessage(availableRoomsSection, message);
+      availableRoomsSection.classList.add('available-cards-centered');
+      domUpdates.hide([submitBookingButton, submitBookingButtonSection, goBackButton, cardSectionTitle]);
+      const timeout = setTimeout(() => {
+        displayHomeView();
+      }, 2000)
+    })
+    .catch(() => {
+      let message = `Sorry, something went wrong on our end! Try Again!`
+      domUpdates.displayMessage(availableRoomsSection, message)
+      availableRoomsSection.classList.add('available-cards-centered');
+      domUpdates.hide([submitBookingButton, submitBookingButtonSection, cardSectionTitle]);
+    })
 }
 
 function formatPost() {
