@@ -17,7 +17,7 @@ describe('Customer Class', function() {
   });
 
   it('should have default properties for password and isManager', function() {
-    expect(customer.password).to.equal('overlook2020');
+    expect(customer.password).to.equal('overlook2021');
     expect(customer.isManager).to.equal(false);
   });
 
