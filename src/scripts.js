@@ -62,6 +62,13 @@ function validateLogin() {
         domUpdates.hide(errorMessageContainer);
       }, 3000)
     })
+  } else {
+    let message = `Error please try a different username or password!`
+    domUpdates.displayMessage(errorMessageContainer, message)
+    domUpdates.show(errorMessageContainer);
+    const timeout = setTimeout(() => {
+      domUpdates.hide(errorMessageContainer);
+    }, 3000)
   }
 }
 
