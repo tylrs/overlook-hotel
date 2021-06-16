@@ -45,7 +45,7 @@ submitBookingButton.addEventListener('click', postNewBooking)
 loginButton.addEventListener('click', validateLogin);
 
 function validateLogin() {
-  event.preventDefault();
+  // event.preventDefault();
   let userName = userNameInput.value;
   let password = passwordInput.value;
   passwordInput.value = '';
