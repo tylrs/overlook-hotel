@@ -33,7 +33,7 @@ const loginView = document.getElementById('loginView');
 const errorMessageContainer = document.getElementById('errorMessageContainer');
 const submitBookingButtonSection = document.getElementById('submitBookingButtonSection');
 
-// window.onload = validateLogin();
+window.onload = validateLogin();
 appTitleButton.addEventListener('click', displayHomeView);
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
 searchCalendar.addEventListener('click', showAvailableRooms);
