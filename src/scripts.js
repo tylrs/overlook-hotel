@@ -132,7 +132,7 @@ function postNewBooking() {
     domUpdates.hide([submitBookingButton, submitBookingButtonSection, goBackCalendarButton, cardSectionTitle]);
     const timeout = setTimeout(() => {
       displayHomeView();
-    }, 3000)
+    }, 2000)
   })
   .catch(error => {
     let message = `Sorry, something went wrong on our end! Try Again!`
