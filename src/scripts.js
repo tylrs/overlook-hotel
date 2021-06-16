@@ -7,6 +7,7 @@ import Hotel from './classes/Hotel.js'
 let currentCustomer, hotel, currentDate, availableRooms, selectedRoom;
 
 // querySelectors
+const appTitle = document.getElementById('appTitle');
 const dashboard = document.getElementById('dashboard');
 const futureBookingsSection = document.getElementById('futureBookings');
 const pastBookingsSection = document.getElementById('pastBookings');
@@ -33,6 +34,7 @@ const errorMessageContainer = document.getElementById('errorMessageContainer');
 const submitBookingButtonSection = document.getElementById('submitBookingButtonSection');
 
 // window.onload = validateLogin();
+appTitle.addEventListener('click', displayHomeView);
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
 searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
