@@ -80,21 +80,6 @@ function validatePassword(customer, password) {
   }
 }
 
-function fetchAllData() {
-  return Promise.all([fetchApiData('customers'), fetchApiData('bookings'), fetchApiData('rooms')]);
-}
-
-function displayClickedRoom(event) {
-  if ((event.target.closest('article') && event instanceof MouseEvent) || event.keyCode === 13) {
-    selectedRoom = availableRooms.find(room => {
-      return room.number === parseInt(event.target.closest('article').id);
-    })
-    domUpdates.hide([filterTagsSection]);
-    domUpdates.show([submitBookingButton, submitBookingButtonSection]);
-    domUpdates.displayRoomView(availableRoomsSection, selectedRoom);
-  }
-}
-
 function instantiateCustomerLogin(customer) {
   currentDate = '2020/02/03';
   fetchAllData()
@@ -115,55 +100,19 @@ function instantiateCustomerLogin(customer) {
     })
 }
 
-function postNewBooking() {
-  let data = formatPost();
-  postApiData(data)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error()
-    } else {
-      return response.json();
-    }
-  })
-  .then(data => {
-    let message = "Congratulations, a new booking was added!"
-    domUpdates.displayMessage(availableRoomsSection, message);
-    availableRoomsSection.classList.add('available-cards-centered');
-    domUpdates.hide([submitBookingButton, submitBookingButtonSection, goBackCalendarButton, cardSectionTitle]);
-    const timeout = setTimeout(() => {
-      displayHomeView();
-    }, 2000)
-  })
-  .catch(error => {
-    let message = `Sorry, something went wrong on our end! Try Again!`
-    domUpdates.displayMessage(availableRoomsSection, message)
-    availableRoomsSection.classList.add('available-cards-centered');
-    domUpdates.hide([submitBookingButton, submitBookingButtonSection, cardSectionTitle]);
-  })
+function fetchAllData() {
+  return Promise.all([fetchApiData('customers'), fetchApiData('bookings'), fetchApiData('rooms')]);
 }
 
-function displayHomeView() {
-  instantiateCustomerLogin(currentCustomer);
-  domUpdates.hide([availableRoomView])
+function populateDashboard(currentCustomer, currentDate, totalSpent) {
+  domUpdates.renderBookingsCards(futureBookingsSection, currentCustomer, currentDate, 'future/present')
+  domUpdates.renderBookingsCards(pastBookingsSection, currentCustomer, currentDate, 'past')
+  domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
+  domUpdates.renderInnerText(futureBookingsTitle, `Upcoming Bookings for ${currentCustomer.name.split(' ')[0]}`)
+  domUpdates.renderInnerText(pastBookingsTitle, `Previous Bookings for ${currentCustomer.name.split(' ')[0]}`)
   domUpdates.show([dashboard, addNewBookingsButton]);
-}
-
-function formatPost() {
-  let submitData = {
-    userID: currentCustomer.id,
-    date: selectedRoom.dateAvailable,
-    roomNumber: selectedRoom.number
-  }
-  return submitData;
-}
-
-function determineViewToGoBackTo(event) {
-  let header = event.target.nextElementSibling.innerText;
-  if (header.includes('Available')) {
-    renderNewBookingsView();
-  } else {
-    showAvailableRooms();
-  }
+  domUpdates.hide([loginView]);
+  availableRoomsSection.classList.remove('available-cards-centered');
 }
 
 function showAvailableRooms() {
@@ -193,20 +142,71 @@ function showFilteredRooms() {
   domUpdates.hide([filterTagsSection]);
 }
 
-function populateDashboard(currentCustomer, currentDate, totalSpent) {
-  domUpdates.renderBookingsCards(futureBookingsSection, currentCustomer, currentDate, 'future/present')
-  domUpdates.renderBookingsCards(pastBookingsSection, currentCustomer, currentDate, 'past')
-  domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
-  domUpdates.renderInnerText(futureBookingsTitle, `Upcoming Bookings for ${currentCustomer.name.split(' ')[0]}`)
-  domUpdates.renderInnerText(pastBookingsTitle, `Previous Bookings for ${currentCustomer.name.split(' ')[0]}`)
-  domUpdates.show([dashboard, addNewBookingsButton]);
-  domUpdates.hide([loginView]);
-  availableRoomsSection.classList.remove('available-cards-centered');
-}
-
 function renderNewBookingsView() {
   domUpdates.renderCalendar(calendarInput, currentDate);
   availableRoomsSection.classList.remove('available-cards-centered');
   domUpdates.show([calendarView]);
   domUpdates.hide([dashboard, addNewBookingsButton, submitBookingButton, submitBookingButtonSection]);
+}
+
+function displayClickedRoom(event) {
+  if ((event.target.closest('article') && event instanceof MouseEvent) || event.keyCode === 13) {
+    selectedRoom = availableRooms.find(room => {
+      return room.number === parseInt(event.target.closest('article').id);
+    })
+    domUpdates.hide([filterTagsSection]);
+    domUpdates.show([submitBookingButton, submitBookingButtonSection]);
+    domUpdates.displayRoomView(availableRoomsSection, selectedRoom);
+  }
+}
+
+function postNewBooking() {
+  let data = formatPost();
+  postApiData(data)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error()
+    } else {
+      return response.json();
+    }
+  })
+  .then(data => {
+    let message = "Congratulations, a new booking was added!"
+    domUpdates.displayMessage(availableRoomsSection, message);
+    availableRoomsSection.classList.add('available-cards-centered');
+    domUpdates.hide([submitBookingButton, submitBookingButtonSection, goBackCalendarButton, cardSectionTitle]);
+    const timeout = setTimeout(() => {
+      displayHomeView();
+    }, 2000)
+  })
+  .catch(error => {
+    let message = `Sorry, something went wrong on our end! Try Again!`
+    domUpdates.displayMessage(availableRoomsSection, message)
+    availableRoomsSection.classList.add('available-cards-centered');
+    domUpdates.hide([submitBookingButton, submitBookingButtonSection, cardSectionTitle]);
+  })
+}
+
+function formatPost() {
+  let submitData = {
+    userID: currentCustomer.id,
+    date: selectedRoom.dateAvailable,
+    roomNumber: selectedRoom.number
+  }
+  return submitData;
+}
+
+function displayHomeView() {
+  instantiateCustomerLogin(currentCustomer);
+  domUpdates.hide([availableRoomView])
+  domUpdates.show([dashboard, addNewBookingsButton]);
+}
+
+function determineViewToGoBackTo(event) {
+  let header = event.target.nextElementSibling.innerText;
+  if (header.includes('Available')) {
+    renderNewBookingsView();
+  } else {
+    showAvailableRooms();
+  }
 }
