@@ -7,7 +7,7 @@ import Hotel from './classes/Hotel.js'
 let currentCustomer, hotel, currentDate, availableRooms, selectedRoom;
 
 // querySelectors
-const appTitle = document.getElementById('appTitle');
+const appTitleButton = document.getElementById('appTitleButton');
 const dashboard = document.getElementById('dashboard');
 const futureBookingsSection = document.getElementById('futureBookings');
 const pastBookingsSection = document.getElementById('pastBookings');
@@ -34,7 +34,7 @@ const errorMessageContainer = document.getElementById('errorMessageContainer');
 const submitBookingButtonSection = document.getElementById('submitBookingButtonSection');
 
 // window.onload = validateLogin();
-appTitle.addEventListener('click', displayHomeView);
+appTitleButton.addEventListener('click', displayHomeView);
 addNewBookingsButton.addEventListener('click', renderNewBookingsView);
 searchCalendar.addEventListener('click', showAvailableRooms);
 filterRoomTypeButton.addEventListener('click', showFilteredRooms);
@@ -113,6 +113,7 @@ function populateDashboard(currentCustomer, currentDate, totalSpent) {
   domUpdates.renderInnerText(futureBookingsTitle, `Upcoming Bookings for ${currentCustomer.name.split(' ')[0]}`)
   domUpdates.renderInnerText(pastBookingsTitle, `Previous Bookings for ${currentCustomer.name.split(' ')[0]}`)
   domUpdates.show([dashboard, addNewBookingsButton]);
+  appTitleButton.disabled = false;
   domUpdates.hide([loginView]);
   availableRoomsSection.classList.remove('available-cards-centered');
 }
@@ -203,6 +204,13 @@ function displayHomeView() {
   domUpdates.hide([availableRoomView])
   domUpdates.show([dashboard, addNewBookingsButton]);
 }
+
+// function displayHomeViewInitial(event) {
+//   console.log(event);
+//   instantiateCustomerLogin(currentCustomer);
+//   domUpdates.hide([availableRoomView])
+//   domUpdates.show([dashboard, addNewBookingsButton]);
+// }
 
 function determineViewToGoBackTo(event) {
   let header = event.target.nextElementSibling.innerText;
