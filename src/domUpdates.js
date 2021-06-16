@@ -159,9 +159,6 @@ let domUpdates = {
   displayMessage(element, message) {
     element.innerHTML = ''
     element.innerHTML = `<p class="error-message">${message}</p>`
-    // const timeout = setTimeout(() => {
-    //   element.innerHTML = ''
-    // }, 5000000)
   },
 
   show(element) {

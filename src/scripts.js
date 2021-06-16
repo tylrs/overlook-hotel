@@ -1,14 +1,6 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 import domUpdates from './domUpdates.js'
 import {fetchApiData, postApiData, fetchCustomer} from './apiCalls.js'
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
-import {customerData, roomsData, bookingsData, allRoomsBooked} from '../test/sample-data.js'
 import Customer from './classes/Customer.js'
 import Hotel from './classes/Hotel.js'
 
@@ -100,33 +92,10 @@ function instantiateCustomerLogin(customer) {
   currentDate = '2020/02/03';
   fetchAllData()
     .then(promise => {
-      hotel = new Hotel(promise[1]['bookings'], promise[2]['rooms'])
-      // hotel.instantiateCustomers(promise[0]['customers'])
-      // hotel.instantiateCustomers(customerData);
+      hotel = new Hotel(promise[1]['bookings'], promise[2]['rooms']);
       hotel.addCustomer(customer);
       hotel.updateCustomersDetailedBookings();
       currentCustomer = hotel.customers[0];
-      populateDashboard(currentCustomer, currentDate, totalSpent);
-    })
-    .catch((error) => {
-      let message = `Error please try logging in again!`
-      domUpdates.displayMessage(errorMessageContainer, message)
-      domUpdates.show(errorMessageContainer);
-      const timeout = setTimeout(() => {
-        domUpdates.hide(errorMessageContainer);
-      }, 3000)
-    })
-}
-
-function instantiateData() {
-  currentDate = '2020/02/03';
-  fetchAllData()
-    .then(promise => {
-      hotel = new Hotel(promise[1]['bookings'], promise[2]['rooms'])
-      hotel.instantiateCustomers(promise[0]['customers'])
-      // hotel.instantiateCustomers(customerData);
-      hotel.updateCustomersDetailedBookings();
-      currentCustomer = hotel.customers[1];
       populateDashboard(currentCustomer, currentDate, totalSpent);
     })
     .catch((error) => {
@@ -168,9 +137,6 @@ function postNewBooking() {
     domUpdates.hide(submitBookingButton);
     domUpdates.hide(submitBookingButtonSection);
     domUpdates.hide(cardSectionTitle);
-    // const timeout = setTimeout(() => {
-    //   renderNewBookingsView();
-    // }, 3000)
   })
 }
 
@@ -221,10 +187,6 @@ function showAvailableRooms() {
     domUpdates.displayMessage(availableRoomsSection, message)
     availableRoomsSection.classList.add('available-cards-centered');
     domUpdates.hide(filterTagsSection);
-    // domUpdates.hide(filterTagsSection);
-    // const timeout = setTimeout(() => {
-    //   renderNewBookingsView();
-    // }, 3000000)
   }
 }
 
