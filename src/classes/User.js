@@ -1,7 +1,7 @@
 class User {
   constructor() {
     this.userName = '';
-    this.password = 'overlook2020';
+    this.password = 'overlook2021';
     this.isManager = false;
   }
 }
