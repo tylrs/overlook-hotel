@@ -205,13 +205,6 @@ function displayHomeView() {
   domUpdates.show([dashboard, addNewBookingsButton]);
 }
 
-// function displayHomeViewInitial(event) {
-//   console.log(event);
-//   instantiateCustomerLogin(currentCustomer);
-//   domUpdates.hide([availableRoomView])
-//   domUpdates.show([dashboard, addNewBookingsButton]);
-// }
-
 function determineViewToGoBackTo(event) {
   let header = event.target.nextElementSibling.innerText;
   if (header.includes('Available')) {
