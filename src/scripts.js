@@ -55,8 +55,7 @@ function validateLogin() {
       validatePassword(customer, password);
     })
     .catch(error => {
-      console.log('error')
-      let message = `Error please try logging in again!`
+      let message = `Error please try a different username or password!`
       domUpdates.displayMessage(errorMessageContainer, message)
       domUpdates.show(errorMessageContainer);
       const timeout = setTimeout(() => {
@@ -69,6 +68,8 @@ function validateLogin() {
 function validatePassword(customer, password) {
   if (customer.password === password) {
     instantiateCustomerLogin(customer);
+  } else {
+    throw new Error('Incorrect password');
   }
 }
 
