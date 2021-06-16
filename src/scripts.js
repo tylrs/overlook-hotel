@@ -57,17 +57,17 @@ function validateLogin() {
     .catch(error => {
       let message = `Error please try a different username or password!`
       domUpdates.displayMessage(errorMessageContainer, message)
-      domUpdates.show(errorMessageContainer);
+      domUpdates.show([errorMessageContainer]);
       const timeout = setTimeout(() => {
-        domUpdates.hide(errorMessageContainer);
+        domUpdates.hide([errorMessageContainer]);
       }, 3000)
     })
   } else {
     let message = `Error please try a different username or password!`
     domUpdates.displayMessage(errorMessageContainer, message)
-    domUpdates.show(errorMessageContainer);
+    domUpdates.show([errorMessageContainer]);
     const timeout = setTimeout(() => {
-      domUpdates.hide(errorMessageContainer);
+      domUpdates.hide([errorMessageContainer]);
     }, 3000)
   }
 }
@@ -89,9 +89,8 @@ function displayClickedRoom(event) {
     selectedRoom = availableRooms.find(room => {
       return room.number === parseInt(event.target.closest('article').id);
     })
-    domUpdates.hide(filterTagsSection);
-    domUpdates.show(submitBookingButton);
-    domUpdates.show(submitBookingButtonSection);
+    domUpdates.hide([filterTagsSection]);
+    domUpdates.show([submitBookingButton, submitBookingButtonSection]);
     domUpdates.displayRoomView(availableRoomsSection, selectedRoom);
   }
 }
@@ -109,9 +108,9 @@ function instantiateCustomerLogin(customer) {
     .catch((error) => {
       let message = `Error please try logging in again!`
       domUpdates.displayMessage(errorMessageContainer, message)
-      domUpdates.show(errorMessageContainer);
+      domUpdates.show([errorMessageContainer]);
       const timeout = setTimeout(() => {
-        domUpdates.hide(errorMessageContainer);
+        domUpdates.hide([errorMessageContainer]);
       }, 3000)
     })
 }
@@ -130,10 +129,7 @@ function postNewBooking() {
     let message = "Congratulations, a new booking was added!"
     domUpdates.displayMessage(availableRoomsSection, message);
     availableRoomsSection.classList.add('available-cards-centered');
-    domUpdates.hide(submitBookingButton);
-    domUpdates.hide(submitBookingButtonSection);
-    domUpdates.hide(goBackCalendarButton);
-    domUpdates.hide(cardSectionTitle);
+    domUpdates.hide([submitBookingButton, submitBookingButtonSection, goBackCalendarButton, cardSectionTitle]);
     const timeout = setTimeout(() => {
       displayHomeView();
     }, 3000)
@@ -142,17 +138,14 @@ function postNewBooking() {
     let message = `Sorry, something went wrong on our end! Try Again!`
     domUpdates.displayMessage(availableRoomsSection, message)
     availableRoomsSection.classList.add('available-cards-centered');
-    domUpdates.hide(submitBookingButton);
-    domUpdates.hide(submitBookingButtonSection);
-    domUpdates.hide(cardSectionTitle);
+    domUpdates.hide([submitBookingButton, submitBookingButtonSection, cardSectionTitle]);
   })
 }
 
 function displayHomeView() {
   instantiateCustomerLogin(currentCustomer);
-  domUpdates.hide(availableRoomView)
-  domUpdates.show(dashboard);
-  domUpdates.show(addNewBookingsButton);
+  domUpdates.hide([availableRoomView])
+  domUpdates.show([dashboard, addNewBookingsButton]);
 }
 
 function formatPost() {
@@ -176,13 +169,8 @@ function determineViewToGoBackTo(event) {
 function showAvailableRooms() {
   let searchDate = calendarInput.value;
   availableRoomsSection.classList.remove('available-cards-centered');
-  domUpdates.hide(calendarView);
-  domUpdates.hide(submitBookingButton);
-  domUpdates.hide(submitBookingButtonSection);
-  domUpdates.show(availableRoomView);
-  domUpdates.show(filterTagsSection);
-  domUpdates.show(goBackCalendarButton);
-  domUpdates.show(cardSectionTitle);
+  domUpdates.hide([calendarView, submitBookingButton, submitBookingButtonSection]);
+  domUpdates.show([availableRoomView, filterTagsSection, goBackCalendarButton, cardSectionTitle]);
   availableRooms = hotel.getAvailableRooms(searchDate);
   if (availableRooms.length) {
     domUpdates.renderAvailableRooms(availableRoomsSection, availableRooms, searchDate);
@@ -194,7 +182,7 @@ function showAvailableRooms() {
     header.innerText = 'Available Rooms';
     domUpdates.displayMessage(availableRoomsSection, message)
     availableRoomsSection.classList.add('available-cards-centered');
-    domUpdates.hide(filterTagsSection);
+    domUpdates.hide([filterTagsSection]);
   }
 }
 
@@ -202,7 +190,7 @@ function showFilteredRooms() {
   event.preventDefault();
   let tagRadioButtons = document.querySelectorAll('input[type="radio"]');
   domUpdates.renderFilteredRooms(availableRoomsSection, availableRooms, tagRadioButtons, hotel);
-  domUpdates.hide(filterTagsSection);
+  domUpdates.hide([filterTagsSection]);
 }
 
 function populateDashboard(currentCustomer, currentDate, totalSpent) {
@@ -211,18 +199,14 @@ function populateDashboard(currentCustomer, currentDate, totalSpent) {
   domUpdates.renderInnerText(totalSpent, `$${currentCustomer.returnTotalSpent()}`);
   domUpdates.renderInnerText(futureBookingsTitle, `Upcoming Bookings for ${currentCustomer.name.split(' ')[0]}`)
   domUpdates.renderInnerText(pastBookingsTitle, `Previous Bookings for ${currentCustomer.name.split(' ')[0]}`)
-  domUpdates.show(dashboard);
-  domUpdates.hide(loginView);
+  domUpdates.show([dashboard, addNewBookingsButton]);
+  domUpdates.hide([loginView]);
   availableRoomsSection.classList.remove('available-cards-centered');
-  domUpdates.show(addNewBookingsButton);
 }
 
 function renderNewBookingsView() {
   domUpdates.renderCalendar(calendarInput, currentDate);
   availableRoomsSection.classList.remove('available-cards-centered');
-  domUpdates.show(calendarView);
-  domUpdates.hide(dashboard);
-  domUpdates.hide(addNewBookingsButton);
-  domUpdates.hide(submitBookingButton);
-  domUpdates.hide(submitBookingButtonSection);
+  domUpdates.show([calendarView]);
+  domUpdates.hide([dashboard, addNewBookingsButton, submitBookingButton, submitBookingButtonSection]);
 }

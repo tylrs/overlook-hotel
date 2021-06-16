@@ -161,13 +161,18 @@ let domUpdates = {
     element.innerHTML = `<p class="error-message">${message}</p>`
   },
 
-  show(element) {
-    element.classList.remove('hide');
+  show(elements) {
+    elements.forEach(element => {
+      element.classList.remove('hide');
+    })
   },
 
-  hide(element) {
-    element.classList.add('hide');
+  hide(elements) {
+    elements.forEach(element => {
+      element.classList.add('hide');
+    })
   }
+  
 }
 
 export default domUpdates;
