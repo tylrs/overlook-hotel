@@ -4,7 +4,7 @@ import {customerData, user1BookingsData, bookingsData, roomsData} from './sample
 import Customer from '../src/classes/Customer.js'
 import Hotel from '../src/classes/Hotel.js'
 
-describe('Customer Class', function() {
+describe('Customer Class Defaults', function() {
   let customer, currentDate, hotel;
   beforeEach (() => {
     customer = new Customer(customerData[0]);
