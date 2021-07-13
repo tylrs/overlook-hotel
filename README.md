@@ -53,7 +53,7 @@ The project spec can be found [here](https://frontend.turing.edu/projects/overlo
 
 ## Contributors
 
-This application was written by [Taylor Galloway](https://github.com/tylrs) Mod 2 frontend engineering students at [Turing School of Software & Design](https://turing.edu/).
+This application was written by [Taylor Galloway](https://github.com/tylrs) frontend engineering student at [Turing School of Software & Design](https://turing.edu/).
 
 ## Technologies Used
 
