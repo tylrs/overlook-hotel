@@ -10,7 +10,7 @@ export const fetchApiData = (type) => {
 };
 
 export const fetchCustomer = (id) => {
-  return fetch(`https://overlook-hotel-api.herokuapp.com//api/v1/customers/${id}`)
+  return fetch(`https://overlook-hotel-api.herokuapp.com/api/v1/customers/${id}`)
     .then(response => {
       if (!response.ok) {
         throw new Error(response.statusText);
@@ -26,7 +26,7 @@ export const postApiData = (data) => {
     'date': data.date,
     'roomNumber': data.roomNumber
   }
-  return fetch(`https://overlook-hotel-api.herokuapp.com//api/v1/bookings`, {
+  return fetch(`https://overlook-hotel-api.herokuapp.com/api/v1/bookings`, {
     method: 'POST',
     body: JSON.stringify(body),
     headers: {
