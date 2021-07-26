@@ -3,6 +3,7 @@
 The Overlook Hotel recreates a basic hotel website. A user can login, view their current and previous bookings, and can also add new bookings based on which rooms are available for a particular date.
 
 The project spec can be found [here](https://frontend.turing.edu/projects/overlook.html).
+
 Deployed Link [here](https://tylrs.github.io/overlook-hotel/)
 
 ## Table of Contents
