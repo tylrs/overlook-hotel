@@ -27,7 +27,8 @@
     "start": "webpack serve",
     "build": "webpack",
     "test": "mochapack 'test/**/*.js'",
-    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
+    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "dayjs": "^1.10.5",
